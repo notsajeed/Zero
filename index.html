@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Project Archive</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+
+    .container {
+      max-width: 900px;
+      width: calc(100% - 40px);
+      margin: 60px auto;
+    }
+
+    .header {
+      margin-bottom: 50px;
+    }
+
+    .title {
+      font-family: Georgia, serif;
+      font-size: 52px;
+      font-weight: normal;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      color: #54595d;
+      font-size: 15px;
+    }
+
+    .project-list {
+      border-top: 1px solid #c8ccd1;
+    }
+
+    .project {
+      display: flex;
+      gap: 24px;
+      padding: 18px 0;
+      border-bottom: 1px solid #eaecf0;
+      transition: background 0.15s ease;
+    }
+
+    .project:hover {
+      background: rgba(0, 0, 0, 0.015);
+    }
+
+    .project-id {
+      width: 50px;
+      flex-shrink: 0;
+      color: #72777d;
+      font-family: monospace;
+      padding-top: 2px;
+    }
+
+    .project-content {
+      flex: 1;
+    }
+
+    .project-content a {
+      font-size: 20px;
+      font-family: Georgia, serif;
+    }
+
+    .description {
+      margin-top: 4px;
+      font-size: 14px;
+      color: #54595d;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 80px;
+    }
+
+    @media (max-width: 700px) {
+
+      .title {
+        font-size: 40px;
+      }
+
+      .project-content a {
+        font-size: 18px;
+      }
+
+      .project {
+        gap: 16px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header class="header">
+
+      <div>
+
+        <h1 class="title">
+          Project Archive
+        </h1>
+
+        <div class="subtitle">
+          Software projects, utilities, experiments, and systems.
+        </div>
+
+      </div>
+
+    </header>
+
+    <div class="project-list">
+
+      <div class="project">
+
+        <div class="project-id">
+          001
+        </div>
+
+        <div class="project-content">
+
+          <a href="projects/leetcity.html">
+            LeetCity
+          </a>
+
+          <div class="description">
+            Interactive 3D skyline visualization platform for LeetCode activity.
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="project">
+
+        <div class="project-id">
+          002
+        </div>
+
+        <div class="project-content">
+
+          <a href="projects/mcbots.html">
+            MCBots
+          </a>
+
+          <div class="description">
+            Experimental multi-bot orchestration system for Minecraft LAN worlds.
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="project">
+
+        <div class="project-id">
+          003
+        </div>
+
+        <div class="project-content">
+
+          <a href="projects/vizq.html">
+            VizQ
+          </a>
+
+          <div class="description">
+            Structured visualization and information exploration system.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <footer class="footer">
+
+      <div class="footer-left">
+
+        <div class="footer-title">
+          Mohammed Sajeed
+        </div>
+
+        <div class="footer-subtitle">
+          Software projects, experiments, and systems.
+        </div>
+
+      </div>
+
+      <div class="footer-links">
+
+        <a href="https://github.com/notsajeed" target="_blank">
+          GitHub
+        </a>
+
+        <a href="https://linkedin.com/in/notsajeed" target="_blank">
+          LinkedIn
+        </a>
+
+        <a href="mailto:mohammedsajeed200510@gmail.com">
+          Email
+        </a>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
+```

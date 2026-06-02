@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>MCBots</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#roles">Bot Roles</a></li>
+          <li><a href="#constraints">Constraints</a></li>
+          <li><a href="#concepts">Supported Concepts</a></li>
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+          <li><a href="#future">Future Direction</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+       <a href="../index.html" class="back-link">
+        ← Back to Home
+        </a>
+
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            MCBots
+          </h1>
+
+          <div class="page-subtitle">
+            Experimental multi-bot orchestration system for Minecraft LAN worlds.
+          </div>
+
+          <div class="status">
+            EXPERIMENTAL
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>Multi-Agent System</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>Experimental</td>
+            </tr>
+
+            <tr>
+              <td>Environment</td>
+              <td>Minecraft LAN</td>
+            </tr>
+
+            <tr>
+              <td>Framework</td>
+              <td>Mineflayer</td>
+            </tr>
+
+            <tr>
+              <td>Language</td>
+              <td>Node.js</td>
+            </tr>
+
+            <tr>
+              <td>Architecture</td>
+              <td>Manager / Worker Model</td>
+            </tr>
+
+            <tr>
+              <td>Bot Count</td>
+              <td>3 Active Bots</td>
+            </tr>
+
+            <tr>
+              <td>Repository</td>
+              <td>
+                <a href="https://github.com/notsajeed/mcbots" target="_blank">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          MCBots is an experimental multi-bot orchestration system for Minecraft
+          built entirely using Mineflayer.
+        </p>
+
+        <p>
+          The project focuses on managing multiple specialized bots inside a
+          single-player Minecraft world opened to LAN without relying on plugins,
+          mods, or dedicated servers.
+        </p>
+
+        <p>
+          Instead of creating large autonomous swarms, the system explores
+          controlled and resource-aware orchestration through a minimal
+          three-bot structure:
+        </p>
+
+        <ul>
+          <li>1 Manager Bot</li>
+          <li>1 Worker Bot</li>
+          <li>1 Miner Bot</li>
+        </ul>
+
+        <p>
+          All bots join the world as standard Minecraft clients through Mineflayer.
+        </p>
+
+      </section>
+
+      <section id="architecture">
+
+        <h2>Architecture</h2>
+
+        <p>
+          The system follows a centralized orchestration model where a single
+          manager bot controls all role-based agents.
+        </p>
+
+<pre>
+Minecraft (Singleplayer → LAN)
+            ↑
+       LAN Port / IP
+            ↑
+        Manager Bot
+            ↑
+   Worker Bot / Miner Bot
+</pre>
+
+        <p>
+          The manager bot remains online continuously and acts as the command layer
+          responsible for spawning, removing, and coordinating other bots.
+        </p>
+
+      </section>
+
+      <section id="roles">
+
+        <h2>Bot Roles</h2>
+
+        <p>
+          Each bot operates under a constrained specialized role.
+        </p>
+
+        <table class="metrics">
+
+          <tr>
+            <th>Role</th>
+            <th>Purpose</th>
+          </tr>
+
+          <tr>
+            <td>Manager</td>
+            <td>Controls orchestration and command handling</td>
+          </tr>
+
+          <tr>
+            <td>Worker</td>
+            <td>General-purpose task execution</td>
+          </tr>
+
+          <tr>
+            <td>Miner</td>
+            <td>Mining-related task execution</td>
+          </tr>
+
+        </table>
+
+        <p>
+          Bots remain idle by default and only activate during direct task execution.
+        </p>
+
+      </section>
+
+      <section id="constraints">
+
+        <h2>Constraints</h2>
+
+        <p>
+          The system was intentionally designed around strict operational limits
+          to maintain stability inside LAN worlds.
+        </p>
+
+        <ul>
+          <li>No autonomous roaming</li>
+          <li>No background scanning</li>
+          <li>No continuous pathfinding</li>
+          <li>Command-driven execution only</li>
+          <li>Time-bounded actions</li>
+          <li>Deterministic task behavior</li>
+        </ul>
+
+        <p>
+          The project prioritizes resource governance and controlled orchestration
+          rather than large-scale automation.
+        </p>
+
+      </section>
+
+      <section id="concepts">
+
+        <h2>Supported Concepts</h2>
+
+        <ul>
+          <li>Multi-agent systems</li>
+          <li>Role specialization</li>
+          <li>Admission control</li>
+          <li>Graceful bot lifecycle management</li>
+          <li>Resource-aware orchestration</li>
+        </ul>
+
+      </section>
+
+      <section id="implementation">
+
+        <h2>Implementation</h2>
+
+        <p>
+          The project is implemented entirely using Mineflayer without external
+          plugins or server modifications.
+        </p>
+
+        <p>
+          All orchestration logic operates through chat commands and controlled
+          task dispatching inside the LAN environment.
+        </p>
+
+        <ul>
+          <li>Node.js</li>
+          <li>Mineflayer</li>
+          <li>Minecraft Java Edition</li>
+        </ul>
+
+      </section>
+
+      <section id="screenshots">
+
+        <h2>Screenshots</h2>
+
+        <img
+          src="../assets/images/mcbots/img1.png"
+          alt="MCBots Overview"
+          class="project-image"
+        />
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          The project was built primarily as an exploration of Mineflayer internals,
+          Minecraft protocol behavior, and safe multi-agent coordination inside
+          constrained environments.
+        </p>
+
+        <p>
+          A major focus of development involved understanding the practical limits
+          of LAN-hosted worlds and designing orchestration rules that avoid
+          instability and disconnections.
+        </p>
+
+      </section>
+
+      <section id="future">
+
+        <h2>Future Direction</h2>
+
+        <ul>
+          <li>Additional specialized bot roles</li>
+          <li>Bot permission systems</li>
+          <li>Status and health monitoring</li>
+          <li>Dedicated orchestration dashboard</li>
+          <li>Migration toward dedicated servers</li>
+        </ul>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and builds.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>
+```

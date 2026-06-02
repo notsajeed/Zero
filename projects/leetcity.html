@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>LeetCity</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#visualization">Visualization System</a></li>
+          <li><a href="#interaction">Interaction Model</a></li>
+          <li><a href="#expansion">City Expansion</a></li>
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+          <li><a href="#inspiration">Inspiration</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+        <a href="../index.html" class="back-link">
+        ← Back to Home
+        </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            LeetCity
+          </h1>
+
+          <div class="page-subtitle">
+            Interactive skyline visualization for LeetCode activity.
+          </div>
+
+          <div class="status">
+            ACTIVE DEVELOPMENT
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>Visualization Platform</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>Active Development</td>
+            </tr>
+
+            <tr>
+              <td>Framework</td>
+              <td>Next.js / React</td>
+            </tr>
+
+            <tr>
+              <td>Rendering</td>
+              <td>Three.js / R3F</td>
+            </tr>
+
+            <tr>
+              <td>Storage</td>
+              <td>Upstash Redis</td>
+            </tr>
+
+            <tr>
+              <td>Repository</td>
+              <td>
+                <a href="https://github.com/notsajeed/leetcity" target="_blank">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Deployment</td>
+              <td>
+                <a href="https://leetcity.vercel.app" target="_blank">
+                  leetcity.vercel.app
+                </a>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          LeetCity is a web application that visualizes LeetCode user statistics
+          as buildings inside an interactive 3D city.
+        </p>
+
+        <p>
+          Instead of representing programming activity through traditional charts
+          or profile dashboards, the project converts public LeetCode statistics
+          into architectural structures distributed across a generated skyline.
+        </p>
+
+        <p>
+          Every user added to the environment becomes a physical structure within
+          the city, allowing coding progress to be interpreted spatially rather
+          than numerically.
+        </p>
+
+      </section>
+
+      <section id="visualization">
+
+        <h2>Visualization System</h2>
+
+        <p>
+          The application transforms public LeetCode profile data into procedural
+          buildings whose appearance changes according to coding activity.
+        </p>
+
+        <p>
+          Metrics such as solved problems, consistency, and difficulty distribution
+          influence different architectural properties within the generated skyline.
+        </p>
+
+      </section>
+
+      <section id="interaction">
+
+        <h2>Interaction Model</h2>
+
+        <p>
+          Users can navigate the environment through standard 3D scene controls,
+          allowing the skyline to be explored from multiple perspectives.
+        </p>
+
+        <ul>
+          <li>Drag to rotate around the city</li>
+          <li>Scroll to zoom in and out</li>
+          <li>Click buildings to inspect profile statistics</li>
+          <li>Add multiple usernames dynamically</li>
+        </ul>
+
+      </section>
+
+      <section id="expansion">
+
+        <h2>City Expansion</h2>
+
+        <p>
+          The skyline continuously expands as additional usernames are added.
+        </p>
+
+        <p>
+          Each profile occupies a distinct location within the environment,
+          gradually transforming the scene into a dense procedural city composed
+          entirely of developer activity.
+        </p>
+
+        <p>
+          The project explores the concept of representing collective programming
+          progress as an evolving urban structure.
+        </p>
+
+      </section>
+
+      <section id="implementation">
+
+        <h2>Implementation</h2>
+
+        <p>
+          The application is built using a component-driven web stack focused
+          on interactive rendering and real-time scene updates.
+        </p>
+
+        <ul>
+          <li>Next.js</li>
+          <li>React</li>
+          <li>TypeScript</li>
+          <li>Three.js</li>
+          <li>React Three Fiber</li>
+          <li>Upstash Redis</li>
+        </ul>
+
+      </section>
+<section id="screenshots">
+
+  <h2>Screenshots</h2>
+
+  <img
+    src="../assets/images/leetcity/img1.png"
+    alt="LeetCity Skyline Overview"
+    class="project-image"
+  />
+
+  <img
+    src="../assets/images/leetcity/img2.png"
+    alt="LeetCity Building Inspection"
+    class="project-image"
+  />
+
+</section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          The project originated from the idea of transforming abstract coding
+          statistics into navigable physical spaces.
+        </p>
+
+        <p>
+          Current development focuses on improving procedural generation,
+          interaction systems, and environmental scale.
+        </p>
+
+      </section>
+
+      <section id="inspiration">
+
+        <h2>Inspiration</h2>
+
+        <p>
+          LeetCity is loosely inspired by GitCity,
+          which visualizes GitHub activity as cities.
+        </p>
+
+        <p>
+          The project adapts a similar concept for competitive programming
+          by representing LeetCode activity as buildings within a generated skyline.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and builds.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>

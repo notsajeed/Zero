@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>VizQ</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#simulation">Simulation Pipeline</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#interface">Interface</a></li>
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#deployment">Deployment</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+
+      <a href="../index.html" class="back-link">
+        ← Back to Home
+      </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            VizQ
+          </h1>
+
+          <div class="page-subtitle">
+            Quantum circuit visualizer and simulator built with React and Qiskit.
+          </div>
+
+          <div class="status">
+            ACTIVE DEVELOPMENT
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>Quantum Simulator</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>Active Development</td>
+            </tr>
+
+            <tr>
+              <td>Frontend</td>
+              <td>React / Vite</td>
+            </tr>
+
+            <tr>
+              <td>Backend</td>
+              <td>Python / Flask</td>
+            </tr>
+
+            <tr>
+              <td>Simulation</td>
+              <td>Qiskit</td>
+            </tr>
+
+            <tr>
+              <td>Deployment</td>
+              <td>
+                <a href="https://vizq.onrender.com/" target="_blank">
+                  vizq.onrender.com
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Repository</td>
+              <td>
+                <a href="https://github.com/notsajeed/vizq" target="_blank">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          VizQ is a quantum circuit simulator that allows users to build,
+          simulate, and visualize quantum circuits interactively through a web interface.
+        </p>
+
+        <p>
+          The system combines a React-based frontend with a Python backend powered
+          by Qiskit, allowing users to construct circuits using quantum gates and
+          inspect the resulting quantum states visually.
+        </p>
+
+        <p>
+          Instead of treating circuits as static code definitions,
+          VizQ focuses on interactive experimentation through direct manipulation
+          and live simulation output.
+        </p>
+
+      </section>
+
+      <section id="simulation">
+
+        <h2>Simulation Pipeline</h2>
+
+        <p>
+          Users define a quantum circuit through the frontend interface by selecting
+          qubits and applying gates such as H, X, Y, Z, RX, RZ, and CX.
+        </p>
+
+        <p>
+          Circuit instructions are sent to the backend through the
+          <code>/simulate</code> endpoint where Qiskit constructs and simulates
+          the quantum circuit using AerSimulator.
+        </p>
+
+        <p>
+          The backend returns:
+        </p>
+
+        <ul>
+          <li>Circuit diagram image</li>
+          <li>Statevector amplitudes</li>
+          <li>Probability distributions</li>
+          <li>Bloch vector information</li>
+        </ul>
+
+        <div class="architecture-block">
+
+<pre>
+React Frontend
+       ↓
+Flask API (/simulate)
+       ↓
+Qiskit Circuit Builder
+       ↓
+AerSimulator
+       ↓
+Simulation Results
+</pre>
+
+        </div>
+
+      </section>
+
+      <section id="features">
+
+        <h2>Features</h2>
+
+        <ul>
+          <li>Add quantum gates dynamically</li>
+          <li>Interactive circuit simulation</li>
+          <li>Statevector visualization</li>
+          <li>Probability distribution charts</li>
+          <li>Qiskit-generated circuit diagrams</li>
+          <li>Bloch vector support for single qubits</li>
+        </ul>
+
+      </section>
+
+      <section id="interface">
+
+        <h2>Interface</h2>
+
+        <p>
+          The interface is structured around direct circuit construction and
+          visualization workflows.
+        </p>
+
+        <table class="metrics">
+
+          <tr>
+            <th>Component</th>
+            <th>Purpose</th>
+          </tr>
+
+          <tr>
+            <td>Qubit Selector</td>
+            <td>Defines active qubit count</td>
+          </tr>
+
+          <tr>
+            <td>Gate Selection</td>
+            <td>Adds quantum operations</td>
+          </tr>
+
+          <tr>
+            <td>Circuit Renderer</td>
+            <td>Displays generated circuit diagrams</td>
+          </tr>
+
+          <tr>
+            <td>Probability Charts</td>
+            <td>Visualizes output distributions</td>
+          </tr>
+
+          <tr>
+            <td>Statevector Panel</td>
+            <td>Displays quantum amplitudes</td>
+          </tr>
+
+        </table>
+
+      </section>
+
+      <section id="implementation">
+
+        <h2>Implementation</h2>
+
+        <p>
+          VizQ uses a full-stack architecture where the frontend handles interaction
+          and visualization while the backend performs circuit construction and simulation.
+        </p>
+
+        <ul>
+          <li>React</li>
+          <li>Vite</li>
+          <li>Recharts</li>
+          <li>Python</li>
+          <li>Flask</li>
+          <li>Qiskit</li>
+          <li>Numpy</li>
+          <li>Matplotlib</li>
+        </ul>
+
+      </section>
+
+      <section id="deployment">
+
+        <h2>Deployment</h2>
+
+        <p>
+          The frontend and backend are deployed independently on Render
+          as separate services.
+        </p>
+
+        <p>
+          The production frontend communicates with the backend simulation endpoint
+          through the hosted Render API.
+        </p>
+
+      </section>
+
+      <section id="screenshots">
+
+        <h2>Screenshots</h2>
+
+        <img
+          src="../assets/images/vizq/img1.png"
+          alt="VizQ Interface"
+          class="project-image"
+        />
+
+        <img
+          src="../assets/images/vizq/img2.png"
+          alt="VizQ Simulation Results"
+          class="project-image"
+        />
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          The project originated as an experiment in combining frontend visualization
+          systems with quantum simulation tooling.
+        </p>
+
+        <p>
+          Current development focuses on improving circuit editing workflows,
+          expanding gate support, and refining visualization systems for larger circuits.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and systems.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>

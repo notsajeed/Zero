@@ -1,0 +1,328 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f8f9fa;
+  color: #202122;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+/* LINKS */
+
+a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* MAIN LAYOUT */
+
+.layout {
+  max-width: 1200px;
+  width: calc(100% - 60px);
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 40px;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  position: sticky;
+  top: 30px;
+  align-self: start;
+}
+
+.toc {
+  background: white;
+  border: 1px solid #c8ccd1;
+  padding: 18px;
+  font-size: 14px;
+}
+
+.toc-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eaecf0;
+  padding-bottom: 8px;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc li {
+  margin: 10px 0;
+}
+
+/* CONTENT */
+
+.content {
+  background: white;
+  border: 1px solid #c8ccd1;
+  padding: 42px;
+}
+
+/* PROJECT HEADER */
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.page-title {
+  font-family: Georgia, serif;
+  font-size: 42px;
+  font-weight: normal;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.page-subtitle {
+  margin-top: 10px;
+  color: #54595d;
+  font-size: 15px;
+}
+
+.status {
+  margin-top: 16px;
+  display: inline-block;
+  border: 1px solid #a2a9b1;
+  background: #f8f9fa;
+  padding: 4px 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* INFOBOX */
+
+.infobox {
+  width: 320px;
+  border: 1px solid #c8ccd1;
+  background: #f8f9fa;
+  flex-shrink: 0;
+}
+
+.infobox-header {
+  background: #eaecf0;
+  border-bottom: 1px solid #c8ccd1;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.infobox table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.infobox td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eaecf0;
+  vertical-align: top;
+}
+
+.infobox td:first-child {
+  width: 40%;
+  font-weight: bold;
+}
+
+/* TYPOGRAPHY */
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: normal;
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 6px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+p {
+  margin: 16px 0;
+}
+
+/* LISTS */
+
+ul,
+ol {
+  padding-left: 24px;
+}
+
+li {
+  margin: 8px 0;
+}
+
+/* TABLES */
+
+.metrics {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  display: block;
+  overflow-x: auto;
+}
+
+.metrics th,
+.metrics td {
+  border: 1px solid #c8ccd1;
+  padding: 12px;
+  text-align: left;
+  min-width: 180px;
+}
+
+.metrics th {
+  background: #eaecf0;
+  font-weight: normal;
+}
+
+/* CODE */
+
+code {
+  background: #f1f2f3;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+pre {
+  background: #f1f2f3;
+  border: 1px solid #c8ccd1;
+  padding: 18px;
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre;
+  font-family: Consolas, monospace;
+  margin-top: 20px;
+}
+
+/* ARCHITECTURE BLOCK */
+
+.architecture-block {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+/* IMAGES */
+
+.project-image {
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid #c8ccd1;
+  display: block;
+}
+
+.image-grid {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* QUOTES */
+
+.quote {
+  margin: 24px 0;
+  padding-left: 18px;
+  border-left: 3px solid #a2a9b1;
+  color: #54595d;
+  font-style: italic;
+}
+
+/* FOOTER */
+
+.footer {
+  margin-top: 70px;
+  padding-top: 24px;
+  border-top: 1px solid #c8ccd1;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.footer-title {
+  font-weight: bold;
+}
+
+.footer-subtitle {
+  margin-top: 4px;
+  color: #72777d;
+  font-size: 14px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  .layout {
+    grid-template-columns: 1fr;
+    width: calc(100% - 30px);
+    gap: 20px;
+  }
+
+  .sidebar {
+    position: relative;
+    top: 0;
+  }
+
+  .project-header {
+    flex-direction: column;
+  }
+
+  .infobox {
+    width: 100%;
+  }
+
+  .content {
+    padding: 24px;
+  }
+
+  .page-title {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #54595d;
+}
+
+.back-link:hover {
+  color: #202122;
+}

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>TPG</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#workflow">Workflow</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#generation">Generation System</a></li>
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+
+      <a href="../index.html" class="back-link">
+        ← Back to Home
+      </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            TPG
+          </h1>
+
+          <div class="page-subtitle">
+            Automated title page generator for reports and assignments.
+          </div>
+
+          <div class="status">
+            ACTIVE DEVELOPMENT
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>Document Generator</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>Active Development</td>
+            </tr>
+
+            <tr>
+              <td>Frontend</td>
+              <td>HTML / CSS / JavaScript</td>
+            </tr>
+
+            <tr>
+              <td>Rendering</td>
+              <td>html2canvas</td>
+            </tr>
+
+            <tr>
+              <td>Deployment</td>
+              <td>
+                <a href="https://tpg-rit.vercel.app" target="_blank">
+                  tpg-rit.vercel.app
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Repository</td>
+              <td>
+                <a href="https://github.com/notsajeed/tpg" target="_blank">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          TPG is a lightweight web application designed to automate the creation
+          of academic title pages for reports and assignments.
+        </p>
+
+        <p>
+          The system generates structured title pages using user-provided inputs
+          such as subject details, faculty information, submitter names,
+          academic year, and topic descriptions.
+        </p>
+
+        <p>
+          Instead of manually formatting title pages repeatedly,
+          the application provides a standardized generation workflow
+          focused on speed, consistency, and simplicity.
+        </p>
+
+      </section>
+
+      <section id="workflow">
+
+        <h2>Workflow</h2>
+
+        <p>
+          Users fill out a structured form containing academic and submission details.
+        </p>
+
+        <p>
+          Once the form is completed, the system dynamically generates
+          a formatted preview page which can then be downloaded as an image.
+        </p>
+
+        <div class="architecture-block">
+
+<pre>
+User Input Form
+        ↓
+Dynamic Data Binding
+        ↓
+Preview Generation
+        ↓
+html2canvas Rendering
+        ↓
+Downloadable Title Page
+</pre>
+
+        </div>
+
+      </section>
+
+      <section id="features">
+
+        <h2>Features</h2>
+
+        <ul>
+          <li>Report and assignment generation modes</li>
+          <li>Multiple submitter support</li>
+          <li>Faculty information integration</li>
+          <li>Dynamic preview generation</li>
+          <li>Academic year display</li>
+          <li>Image export support</li>
+        </ul>
+
+      </section>
+
+      <section id="generation">
+
+        <h2>Generation System</h2>
+
+        <p>
+          The generation process is handled entirely on the client side using JavaScript.
+        </p>
+
+        <p>
+          Form inputs are mapped directly into a preview container where
+          placeholders are dynamically replaced with generated content.
+        </p>
+
+        <table class="metrics">
+
+          <tr>
+            <th>Component</th>
+            <th>Purpose</th>
+          </tr>
+
+          <tr>
+            <td>Form Inputs</td>
+            <td>Collect academic metadata</td>
+          </tr>
+
+          <tr>
+            <td>Preview Renderer</td>
+            <td>Displays formatted title page</td>
+          </tr>
+
+          <tr>
+            <td>Submitter Manager</td>
+            <td>Handles multiple contributors</td>
+          </tr>
+
+          <tr>
+            <td>html2canvas</td>
+            <td>Exports preview as image</td>
+          </tr>
+
+        </table>
+
+      </section>
+
+      <section id="implementation">
+
+        <h2>Implementation</h2>
+
+        <p>
+          The application uses a lightweight frontend architecture without external frameworks.
+        </p>
+
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>html2canvas</li>
+        </ul>
+
+        <p>
+          Dynamic content rendering is handled through direct DOM manipulation
+          and runtime preview updates.
+        </p>
+
+      </section>
+
+      <section id="screenshots">
+
+        <h2>Screenshots</h2>
+
+        <img
+          src="../assets/images/tpg/img1.png"
+          alt="TPG Interface"
+          class="project-image"
+        />
+
+        <img
+          src="../assets/images/tpg/img2.png"
+          alt="Generated Title Page"
+          class="project-image"
+        />
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          The project originated from the repetitive process of manually formatting
+          assignment and report title pages for academic submissions.
+        </p>
+
+        <p>
+          Development focused on minimizing friction while maintaining
+          consistent visual formatting across generated pages.
+        </p>
+
+        <p>
+          The current system prioritizes simplicity and fast generation
+          over heavy customization workflows.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and systems.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>

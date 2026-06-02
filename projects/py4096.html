@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>py4096</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#gameplay">Gameplay System</a></li>
+          <li><a href="#rendering">Terminal Rendering</a></li>
+          <li><a href="#controls">Controls</a></li>
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#distribution">Distribution</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+
+      <a href="../index.html" class="back-link">
+        ← Back to Home
+      </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            py4096
+          </h1>
+
+          <div class="page-subtitle">
+            Terminal-based implementation of the 4096 puzzle game.
+          </div>
+
+          <div class="status">
+            RELEASED
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>Terminal Game</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>Released</td>
+            </tr>
+
+            <tr>
+              <td>Language</td>
+              <td>Python</td>
+            </tr>
+
+            <tr>
+              <td>Interface</td>
+              <td>Terminal / ANSI Rendering</td>
+            </tr>
+
+            <tr>
+              <td>Distribution</td>
+              <td>PyPI</td>
+            </tr>
+
+            <tr>
+              <td>Requirements</td>
+              <td>Python 3.8+</td>
+            </tr>
+
+            <tr>
+              <td>Repository</td>
+              <td>
+                <a href="https://github.com/notsajeed/py4096" target="_blank">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Package</td>
+              <td>
+                <a href="https://pypi.org/project/py4096/" target="_blank">
+                  PyPI
+                </a>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          py4096 is a terminal-based implementation of the 4096 puzzle game
+          designed entirely for command-line environments.
+        </p>
+
+        <p>
+          The project focuses on lightweight gameplay, ANSI-rendered visuals,
+          and minimal dependencies while preserving the core mechanics
+          of tile merging and score progression.
+        </p>
+
+        <p>
+          The system is distributed as a Python package and can be installed
+          directly through pip.
+        </p>
+
+        <div class="quote">
+          Play 4096 directly inside the terminal.
+        </div>
+
+      </section>
+
+      <section id="gameplay">
+
+        <h2>Gameplay System</h2>
+
+        <p>
+          The board operates on a 4×4 grid where tiles merge when identical
+          values collide during directional movement.
+        </p>
+
+        <p>
+          Movement logic is implemented through board rotation and left-shift operations,
+          allowing all directional inputs to share a single merge pipeline.
+        </p>
+
+        <div class="architecture-block">
+
+<pre>
+Input (W/A/S/D)
+        ↓
+Board Rotation
+        ↓
+Left Merge Logic
+        ↓
+Tile Compression
+        ↓
+Random Tile Spawn
+        ↓
+Win / Lose Detection
+</pre>
+
+        </div>
+
+      </section>
+
+      <section id="rendering">
+
+        <h2>Terminal Rendering</h2>
+
+        <p>
+          The interface uses ANSI escape sequences to render colored tiles directly
+          inside the terminal.
+        </p>
+
+        <p>
+          Each tile value maps to a dedicated background color,
+          allowing larger values to become visually distinguishable during gameplay.
+        </p>
+
+        <table class="metrics">
+
+          <tr>
+            <th>Tile</th>
+            <th>Rendering Style</th>
+          </tr>
+
+          <tr>
+            <td>2 / 4</td>
+            <td>Light neutral tones</td>
+          </tr>
+
+          <tr>
+            <td>8 / 16</td>
+            <td>Orange spectrum</td>
+          </tr>
+
+          <tr>
+            <td>32 / 64</td>
+            <td>Red spectrum</td>
+          </tr>
+
+          <tr>
+            <td>128+</td>
+            <td>High-contrast color states</td>
+          </tr>
+
+        </table>
+
+      </section>
+
+      <section id="controls">
+
+        <h2>Controls</h2>
+
+        <table class="metrics">
+
+          <tr>
+            <th>Action</th>
+            <th>Key</th>
+          </tr>
+
+          <tr>
+            <td>Move Up</td>
+            <td>W</td>
+          </tr>
+
+          <tr>
+            <td>Move Left</td>
+            <td>A</td>
+          </tr>
+
+          <tr>
+            <td>Move Down</td>
+            <td>S</td>
+          </tr>
+
+          <tr>
+            <td>Move Right</td>
+            <td>D</td>
+          </tr>
+
+          <tr>
+            <td>Quit</td>
+            <td>Q</td>
+          </tr>
+
+        </table>
+
+      </section>
+
+      <section id="implementation">
+
+        <h2>Implementation</h2>
+
+        <p>
+          The project is structured around modular board logic,
+          rendering systems, and terminal interaction loops.
+        </p>
+
+        <ul>
+          <li>Board initialization and tile generation</li>
+          <li>Rotation-based directional movement</li>
+          <li>Tile merge and compression systems</li>
+          <li>ANSI terminal rendering</li>
+          <li>Win and game-over detection</li>
+        </ul>
+
+        <p>
+          Gameplay execution runs through a continuous input loop
+          managed by the CLI runtime.
+        </p>
+
+      </section>
+
+      <section id="distribution">
+
+        <h2>Distribution</h2>
+
+        <p>
+          The project is distributed through PyPI and can be installed globally
+          using pip.
+        </p>
+
+<pre>
+pip install py4096
+</pre>
+
+        <p>
+          After installation:
+        </p>
+
+<pre>
+py4096
+</pre>
+
+      </section>
+
+      <section id="screenshots">
+
+        <h2>Screenshots</h2>
+
+        <img
+          src="../assets/images/py4096/img1.png"
+          alt="py4096 Terminal Gameplay"
+          class="project-image"
+        />
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          The project originated as an experiment in building interactive
+          terminal applications with minimal runtime complexity.
+        </p>
+
+        <p>
+          Development focused heavily on board transformation logic,
+          reusable movement systems, and visually readable ANSI rendering.
+        </p>
+
+        <p>
+          The rotation-based movement pipeline simplified directional handling
+          while keeping gameplay behavior deterministic.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and systems.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>

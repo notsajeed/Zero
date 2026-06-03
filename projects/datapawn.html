@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Datapawn</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#generation">Dataset Generation</a></li>
+          <li><a href="#metadata">Metadata</a></li>
+          <li><a href="#customization">Customization</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#applications">Applications</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+
+      <a href="../index.html" class="back-link">
+        ← Back to Home
+      </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            Chess Dataset Generator
+          </h1>
+
+          <div class="page-subtitle">
+            Procedural generation of chessboard image datasets from legal positions.
+          </div>
+
+            <div class="status">
+            COMPLETED PROJECT
+            </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>Dataset Generation Tool</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>active</td>
+            </tr>
+
+            <tr>
+              <td>Language</td>
+              <td>Python</td>
+            </tr>
+
+            <tr>
+              <td>Libraries</td>
+              <td>python-chess / Pillow</td>
+            </tr>
+
+            <tr>
+              <td>Output</td>
+              <td>PNG Dataset + Metadata</td>
+            </tr>
+
+            <tr>
+              <td>Repository</td>
+              <td>
+                <a href="#" target="_blank">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          Chess Dataset Generator is a Python-based tool
+          for procedurally generating chessboard image datasets
+          from random legal chess positions.
+        </p>
+
+        <p>
+          The project renders chessboards using custom sprite sets
+          and exports structured metadata alongside generated images.
+        </p>
+
+        <p>
+          It was built as a lightweight experiment for creating
+          synthetic chess datasets for visualization and machine learning tasks.
+        </p>
+
+      </section>
+
+      <section id="features">
+
+        <h2>Features</h2>
+
+        <ul>
+          <li>Generate random legal chess positions</li>
+          <li>Render chessboards from FEN strings</li>
+          <li>Export image datasets with metadata</li>
+          <li>Configurable board resolution and sprite sets</li>
+          <li>Deterministic dataset generation using seeds</li>
+          <li>Automatic metadata generation for each position</li>
+        </ul>
+
+      </section>
+
+      <section id="generation">
+
+        <h2>Dataset Generation</h2>
+
+        <p>
+          Legal chess positions are generated using python-chess
+          and converted into rendered chessboard images using Pillow.
+        </p>
+
+        <p>
+          Each generated sample includes both the rendered board image
+          and structured metadata describing the game state.
+        </p>
+
+        <p>
+          The generator supports configurable board sizes,
+          sprite themes, and dataset output structure.
+        </p>
+
+      </section>
+
+      <section id="metadata">
+
+        <h2>Metadata</h2>
+
+        <p>
+          Generated metadata includes information about
+          the full board state and game conditions.
+        </p>
+
+        <ul>
+          <li>FEN representation</li>
+          <li>Current player turn</li>
+          <li>Move counter</li>
+          <li>Castling rights</li>
+          <li>En passant availability</li>
+          <li>Check status</li>
+          <li>Game-over state</li>
+        </ul>
+
+      </section>
+
+      <section id="customization">
+
+        <h2>Customization</h2>
+
+        <p>
+          The generator supports multiple configuration options
+          for controlling visual output and dataset structure.
+        </p>
+
+        <ul>
+          <li>Custom chess piece sprite sets</li>
+          <li>Adjustable image resolution</li>
+          <li>Different board themes and layouts</li>
+          <li>Custom position distribution logic</li>
+        </ul>
+
+      </section>
+
+      <section id="screenshots">
+
+        <h2>Screenshots</h2>
+
+        <img
+          src="../assets/images/datapawn/img1.png"
+          alt="Dataset Metadata Example"
+          class="project-image"
+        />
+
+        <img
+          src="../assets/images/datapawn/img2.png"
+          alt="Chessboard"
+          class="project-image"
+        />
+
+      </section>
+
+      <section id="applications">
+
+        <h2>Applications</h2>
+
+        <ul>
+          <li>Machine learning dataset generation</li>
+          <li>Computer vision experiments</li>
+          <li>Synthetic chessboard image generation</li>
+          <li>Chess visualization systems</li>
+          <li>Data augmentation workflows</li>
+        </ul>
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          The project explored procedural dataset generation
+          and reproducible synthetic image pipelines.
+        </p>
+
+        <p>
+          Development focused on deterministic generation,
+          configurable rendering, and metadata consistency.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and builds.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>
+```

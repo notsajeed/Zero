@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ThreeBodySim</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#requirements">Requirements</a></li>
+          <li><a href="#usage">Usage</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#limitations">Known Limitations</a></li>
+          <li><a href="#future">Future Enhancements</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+
+      <a href="../index.html" class="back-link">
+        ← Back to Home
+      </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            ThreeBodySim
+          </h1>
+
+          <div class="page-subtitle">
+            Real-time 3D visualization of the classical three-body problem.
+          </div>
+
+          <div class="status">
+            ACTIVE PROJECT
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>Physics Simulation</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>Active Development</td>
+            </tr>
+
+            <tr>
+              <td>Language</td>
+              <td>Python</td>
+            </tr>
+
+            <tr>
+              <td>Libraries</td>
+              <td>NumPy / SciPy / Matplotlib</td>
+            </tr>
+
+            <tr>
+            <td>Package</td>
+            <td>
+                <a href="https://pypi.org/project/threebodysim/" target="_blank">
+                Pypi
+                </a>
+            </td>
+            </tr>
+
+            <tr>
+              <td>Outputs</td>
+              <td>CSV / MP4</td>
+            </tr>
+
+            <tr>
+            <td>Repository</td>
+            <td>
+                <a href="https://github.com/notsajeed/3body" target="_blank">
+                Github
+                </a>
+            </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          ThreeBodySim is a Python-based 3D visualization of the classical
+          three-body problem using matplotlib, scipy, and numpy.
+        </p>
+
+        <p>
+          The project simulates the chaotic gravitational interaction between
+          three mutually attracting bodies and visualizes their motion through
+          real-time 3D animation.
+        </p>
+
+        <p>
+          The simulator focuses on accessibility and interactive experimentation
+          rather than strict scientific accuracy.
+        </p>
+
+      </section>
+
+      <section id="features">
+
+        <h2>Features</h2>
+
+        <ul>
+          <li>Interactive CLI configuration menu</li>
+          <li>Customizable masses, positions, velocities, and gravity</li>
+          <li>Real-time 3D animation using matplotlib.animation</li>
+          <li>Exports simulation data to CSV format</li>
+          <li>Exports animation as MP4 using FFmpeg</li>
+          <li>Automatic stop condition when bodies leave bounds</li>
+          <li>Graceful hiding of out-of-bound bodies</li>
+          <li>Trajectory analysis support post-simulation</li>
+          <li>Available as a PyPI package: threebodysim</li>
+        </ul>
+
+      </section>
+
+      <section id="requirements">
+
+        <h2>Requirements</h2>
+
+        <ul>
+          <li>Python 3.7+</li>
+          <li>numpy</li>
+          <li>scipy</li>
+          <li>matplotlib</li>
+          <li>pandas</li>
+          <li>ffmpeg</li>
+        </ul>
+
+      </section>
+
+      <section id="usage">
+
+        <h2>Usage</h2>
+
+        <p>
+          Run the simulator through the command line and choose between
+          default values or custom simulation parameters.
+        </p>
+
+        <ul>
+          <li>Press Enter to use default values</li>
+          <li>Edit masses, velocities, positions, and gravitational constants</li>
+          <li>Generate animated orbital simulations in real time</li>
+          <li>Export simulation outputs for further analysis</li>
+        </ul>
+
+      </section>
+
+      <section id="screenshots">
+
+        <h2>Screenshots</h2>
+
+        <img
+          src="../assets/images/3body/img1.png"
+          alt="ThreeBodySim Main Simulation"
+          class="project-image"
+        />
+
+        <img
+          src="../assets/images/3body/img2.png"
+          alt="ThreeBodySim Main Simulation"
+          class="project-image"
+        />
+
+      </section>
+
+      <section id="limitations">
+
+        <h2>Known Limitations</h2>
+
+        <p>
+          The simulator prioritizes visualization and usability over exact
+          physical accuracy.
+        </p>
+
+        <ul>
+          <li>No collision detection between bodies</li>
+          <li>No energy conservation tracking</li>
+          <li>Fixed timestep sampling</li>
+          <li>Newtonian gravity only</li>
+          <li>No relativistic corrections or external forces</li>
+        </ul>
+
+      </section>
+
+      <section id="future">
+
+        <h2>Future Enhancements</h2>
+
+        <ul>
+          <li>Energy and angular momentum tracking</li>
+          <li>Real-world unit support</li>
+          <li>Collision detection and merging</li>
+          <li>Improved numerical integrators</li>
+          <li>Web-based visualization using WebGL or Three.js</li>
+        </ul>
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          The project was built to explore chaotic systems and orbital mechanics
+          through interactive scientific visualization.
+        </p>
+
+        <p>
+          Simulation outputs are automatically stored inside the outputs
+          directory for easier organization and post-processing.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and builds.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>

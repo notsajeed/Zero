@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Ath</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#usage">Usage</a></li>
+          <li><a href="#providers">AI Providers</a></li>
+          <!-- <li><a href="#screenshots">Screenshots</a></li> -->
+          <li><a href="#possibilities">Scope</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+
+      <a href="../index.html" class="back-link">
+        ← Back to Home
+      </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            Ath
+          </h1>
+
+          <div class="page-subtitle">
+            Experimental AI-powered Python code assistant.
+          </div>
+
+          <div class="status">
+            EXPERIMENTAL PROJECT
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>AI Developer Tool</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>Experimental</td>
+            </tr>
+
+            <tr>
+              <td>Language</td>
+              <td>Python</td>
+            </tr>
+
+            <tr>
+              <td>Storage</td>
+              <td>SQLite</td>
+            </tr>
+
+            <tr>
+              <td>Parsing</td>
+              <td>Python AST</td>
+            </tr>
+
+            <tr>
+              <td>Repository</td>
+              <td>
+                <a href="https://github.com/notsajeed/Ath" target="_blank">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          Ath is an experimental AI-powered Python code assistant
+          designed to help developers inspect, understand, and interact
+          with their Python codebase through natural language.
+        </p>
+
+        <p>
+          The tool analyzes project structure using Python AST parsing
+          and provides contextual assistance through an interactive CLI chat system.
+        </p>
+
+        <p>
+          Ath focuses on lightweight local analysis, project-wide context,
+          and flexible AI provider integration.
+        </p>
+
+      </section>
+
+      <section id="features">
+
+        <h2>Features</h2>
+
+        <ul>
+          <li>AI-powered Python codebase analysis</li>
+          <li>Interactive chat interface for code understanding</li>
+          <li>Python AST-based project parsing</li>
+          <li>Inspection of files, functions, classes, and imports</li>
+          <li>Project-wide contextual understanding</li>
+          <li>Support for OpenAI, Anthropic, and Ollama</li>
+          <li>Lightweight SQLite-based storage</li>
+          <li>CLI-driven workflow</li>
+        </ul>
+
+      </section>
+
+      <section id="installation">
+
+        <h2>Installation</h2>
+
+        <p>
+          Clone the repository and install the project locally.
+        </p>
+
+        <pre><code>git clone https://github.com/notsajeed/Ath.git
+ cd Ath
+ pip install -e .</code></pre>
+
+        <p>
+          Initialize the current Python project:
+        </p>
+
+        <pre><code>ath init --force</code></pre>
+
+      </section>
+
+      <section id="usage">
+
+        <h2>Usage</h2>
+
+        <p>
+          Ath provides commands for inspecting Python files
+          and interacting with the codebase using AI chat.
+        </p>
+
+<pre><code>ath inspect src/main.py
+ ath chat
+</code></pre>
+
+        <p>
+          The assistant understands Python project structure,
+          imports, classes, functions, and relationships between files.
+        </p>
+
+      </section>
+
+      <section id="providers">
+
+        <h2>AI Providers</h2>
+
+        <p>
+          Ath supports multiple AI providers and local models.
+        </p>
+
+        <ul>
+          <li>OpenAI</li>
+          <li>Anthropic Claude</li>
+          <li>Ollama</li>
+          <li>CodeLlama</li>
+        </ul>
+
+        <p>
+          Configuration is handled locally through the CLI.
+        </p>
+
+      </section>
+
+      <section id="possibilities">
+
+        <h2>Scope</h2>
+
+        <ul>
+          <li>JavaScript and TypeScript support</li>
+          <li>Java, Go, and Rust parsing</li>
+          <li>Multi-language project support</li>
+          <li>Git integration for change analysis</li>
+          <li>Automatic documentation generation</li>
+          <li>Code quality analysis</li>
+        </ul>
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          Ath started as an experiment exploring how AI systems
+          can interact with real Python project structures
+          through lightweight local tooling.
+        </p>
+
+        <p>
+          Current development focuses on improving contextual understanding,
+          project indexing, and multi-provider compatibility.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and builds.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>
+```

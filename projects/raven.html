@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Raven</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#commands">Commands</a></li>
+          <li><a href="#workflow">Core Workflow</a></li>
+          <li><a href="#mythology">Mythology</a></li>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+
+      <a href="../index.html" class="back-link">
+        ← Back to Home
+      </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            Raven
+          </h1>
+
+          <div class="page-subtitle">
+            A semantic CLI wrapper around Git. Be Odin. Send ravens.
+          </div>
+
+          <div class="status">
+            COMPLETED PROJECT
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>CLI Tool</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>stable</td>
+            </tr>
+
+            <tr>
+              <td>Language</td>
+              <td>Python</td>
+            </tr>
+
+            <tr>
+              <td>Version</td>
+              <td>v0.1.0</td>
+            </tr>
+
+            <tr>
+              <td>Distribution</td>
+              <td>
+                <a href="https://pypi.org/project/odin-raven/#description" target="_blank">
+                  PyPI (odin-raven)
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>License</td>
+              <td>MIT</td>
+            </tr>
+
+            <tr>
+              <td>Repository</td>
+              <td>
+                <a href="https://github.com/notsajeed/raven" target="_blank">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          Raven is a semantic CLI wrapper around Git that replaces mechanical
+          Git commands with intent-driven verbs.
+        </p>
+
+        <p>
+          Instead of typing <code>git add .</code> and <code>git commit -m</code>,
+          you use words like <code>gather</code> and <code>mark</code> —
+          language that describes what you mean, not what the machine expects.
+        </p>
+
+        <p>
+          Git remains the engine. Raven is the messenger.
+        </p>
+
+      </section>
+
+      <section id="features">
+
+        <h2>Features</h2>
+
+        <ul>
+          <li>Human-friendly aliases for common Git operations</li>
+          <li>Intent-driven verbs inspired by Norse mythology</li>
+          <li>Zero changes to underlying Git behaviour</li>
+          <li>Installable via pip as <code>odin-raven</code></li>
+          <li>Lightweight with no heavy dependencies</li>
+          <li>Full branch and history management support</li>
+        </ul>
+
+      </section>
+
+      <section id="commands">
+
+        <h2>Commands</h2>
+
+        <p>
+          Every Raven command maps directly to a Git equivalent.
+          The translation is transparent — Git does the actual work.
+        </p>
+
+        <table style="width:100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 1rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid currentColor; opacity: 0.9;">
+              <th style="text-align: left; padding: 0.5rem 1rem 0.5rem 0;">Raven Command</th>
+              <th style="text-align: left; padding: 0.5rem 1rem;">Git Equivalent</th>
+              <th style="text-align: left; padding: 0.5rem 0 0.5rem 1rem;">Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven awaken</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git init</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Initialize repository</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven watch</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git status</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Observe repo state</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven gather</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git add .</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Stage changes</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven mark "msg"</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git commit -m</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Record a commit</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven fly</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git push</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Push changes</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven sync</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git pull</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Sync with remote</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven huginn</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git diff</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Think before acting</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven muninn</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git log</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Recall history</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven paths</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git branch</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">View branches</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven perch &lt;branch&gt;</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git checkout</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Switch branch</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(128,128,128,0.2);">
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven spawn &lt;branch&gt;</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git checkout -b</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Create branch</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.5rem 1rem 0.5rem 0;"><code>raven merge &lt;branch&gt;</code></td>
+              <td style="padding: 0.5rem 1rem;"><code>git merge</code></td>
+              <td style="padding: 0.5rem 0 0.5rem 1rem; opacity: 0.75;">Merge branch</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+
+      <section id="workflow">
+
+        <h2>Core Workflow</h2>
+
+        <p>
+          A typical Raven session looks like this:
+        </p>
+
+        <pre><code>raven watch
+raven gather
+raven mark "feat: add new feature"
+raven fly</code></pre>
+
+        <p>
+          Which translates directly to:
+        </p>
+
+        <pre><code>git status
+git add .
+git commit -m "feat: add new feature"
+git push</code></pre>
+
+      </section>
+
+      <section id="mythology">
+
+        <h2>Mythology</h2>
+
+        <p>
+          In Norse mythology, Odin keeps two ravens — Huginn and Muninn —
+          who fly across the world each day and return to report what they have seen.
+        </p>
+
+        <ul>
+          <li><strong>Huginn</strong> — Thought. Maps to <code>git diff</code>: inspect before you act.</li>
+          <li><strong>Muninn</strong> — Memory. Maps to <code>git log</code>: recall what came before.</li>
+        </ul>
+
+        <p>
+          The project borrows this idea lightly — using it as a naming layer,
+          not a theme to overload.
+        </p>
+
+      </section>
+
+      <section id="installation">
+
+        <h2>Installation</h2>
+
+        <p>
+          Raven is distributed on PyPI under the package name <code>odin-raven</code>.
+        </p>
+
+        <pre><code>pip install odin-raven</code></pre>
+
+        <p>
+          After installation, the <code>raven</code> command is available globally:
+        </p>
+
+        <pre><code>raven --help</code></pre>
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          Raven started as a small experiment in making Git feel more intentional.
+          The command set was kept minimal — only the operations that matter
+          in a typical day-to-day workflow.
+        </p>
+
+        <p>
+          The project is stable at v0.1.0. Future additions may happen,
+          or may not. It does what it needs to do.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and builds.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>

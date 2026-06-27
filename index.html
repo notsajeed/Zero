@@ -1,364 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Project Archive</title>
-
-  <link rel="stylesheet" href="styles.css" />
-
+  <title>Mohammed Sajeed</title>
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .container {
-      max-width: 900px;
-      width: calc(100% - 40px);
-      margin: 60px auto;
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Georgia', serif;
     }
 
-    .header {
-      margin-bottom: 50px;
-    }
-
-    .title {
-      font-family: Georgia, serif;
-      font-size: 52px;
-      font-weight: normal;
-      margin: 0;
-      line-height: 1.1;
-    }
-
-    .subtitle {
-      margin-top: 12px;
-      color: #54595d;
-      font-size: 15px;
-    }
-
-    .project-list {
-      border-top: 1px solid #c8ccd1;
-    }
-
-    .project {
+    .split {
       display: flex;
-      gap: 24px;
-      padding: 18px 0;
-      border-bottom: 1px solid #eaecf0;
-      transition: background 0.15s ease;
+      height: 100vh;
+      width: 100vw;
     }
 
-    .project:hover {
-      background: rgba(0, 0, 0, 0.015);
-    }
-
-    .project-id {
-      width: 50px;
-      flex-shrink: 0;
-      color: #72777d;
-      font-family: monospace;
-      padding-top: 2px;
-    }
-
-    .project-content {
+    /* ── LIGHT SIDE ── */
+    .side-light {
       flex: 1;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 3rem 4rem;
+      cursor: pointer;
+      transition: flex 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+      border-right: 1px solid #a2a9b1;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
     }
 
-    .project-content a {
-      font-size: 20px;
-      font-family: Georgia, serif;
-    }
+    .side-light:hover { flex: 1.35; }
 
-    .description {
-      margin-top: 4px;
-      font-size: 14px;
-      color: #54595d;
+    .light-preview {
+      position: absolute;
+      inset: 0;
+      padding: 2rem;
+      opacity: 0.18;
+      pointer-events: none;
+      font-family: 'Linux Libertine', 'Georgia', serif;
+      color: #202122;
+      font-size: 0.75rem;
       line-height: 1.6;
+      overflow: hidden;
     }
 
-    .footer {
-      margin-top: 80px;
+    .light-preview-title {
+      font-size: 1.6rem;
+      font-weight: normal;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.5rem;
     }
 
-    @media (max-width: 700px) {
-
-      .title {
-        font-size: 40px;
-      }
-
-      .project-content a {
-        font-size: 18px;
-      }
-
-      .project {
-        gap: 16px;
-      }
-
+    .light-preview-toc {
+      display: inline-block;
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+      padding: 0.4rem 0.6rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.7rem;
     }
 
+    .light-preview-toc div { font-weight: bold; margin-bottom: 0.2rem; }
+    .light-preview-toc ol { padding-left: 1rem; }
+
+    .light-preview-infobox {
+      float: right;
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+      width: 120px;
+      margin-left: 0.5rem;
+      font-size: 0.65rem;
+    }
+
+    .light-preview-infobox-header {
+      background: #cee0f2;
+      text-align: center;
+      padding: 0.2rem;
+      font-weight: bold;
+    }
+
+    .light-preview-infobox table { width: 100%; border-collapse: collapse; }
+    .light-preview-infobox td { padding: 0.15rem 0.3rem; border-top: 1px solid #eaecf0; font-size: 0.62rem; }
+
+    .light-label {
+      position: relative;
+      z-index: 2;
+    }
+
+    .light-label .eyebrow {
+      font-size: 0.75rem;
+      color: #54595d;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .light-label h2 {
+      font-size: 2rem;
+      font-weight: normal;
+      color: #202122;
+      margin-bottom: 0.3rem;
+    }
+
+    .light-label p {
+      font-size: 0.88rem;
+      color: #54595d;
+      max-width: 260px;
+      line-height: 1.5;
+    }
+
+    .light-label .enter {
+      margin-top: 1.25rem;
+      font-size: 0.82rem;
+      color: #0645ad;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── DARK SIDE ── */
+    .side-dark {
+      flex: 1;
+      background: #03060f;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 3rem 4rem;
+      cursor: pointer;
+      transition: flex 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .side-dark:hover { flex: 1.35; }
+
+    /* star canvas */
+    #star-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.6;
+    }
+
+    /* tree silhouette */
+    .tree-silhouette {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      opacity: 0.12;
+    }
+
+    .tree-silhouette svg {
+      height: 90%;
+      width: auto;
+    }
+
+    .dark-label {
+      position: relative;
+      z-index: 2;
+      text-align: right;
+    }
+
+    .dark-label .eyebrow {
+      font-size: 0.75rem;
+      color: #4a6fa5;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      font-family: 'Courier New', monospace;
+    }
+
+    .dark-label h2 {
+      font-size: 2rem;
+      font-weight: normal;
+      color: #e8e8f0;
+      margin-bottom: 0.3rem;
+      font-family: 'Georgia', serif;
+    }
+
+    .dark-label p {
+      font-size: 0.88rem;
+      color: #a0aec0;
+      max-width: 260px;
+      line-height: 1.5;
+      margin-left: auto;
+    }
+
+    .dark-label .enter {
+      margin-top: 1.25rem;
+      font-size: 0.82rem;
+      color: #4a6fa5;
+      letter-spacing: 0.06em;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* divider label */
+    .divider {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      pointer-events: none;
+    }
+
+    .divider-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, #a2a9b1, transparent);
+    }
+
+    .divider-name {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #a2a9b1;
+      white-space: nowrap;
+      font-family: 'Georgia', serif;
+    }
+
+    @media (max-width: 640px) {
+      .split { flex-direction: column; }
+      .side-light, .side-dark {
+        align-items: center;
+        padding: 2.5rem 2rem;
+      }
+      .side-light:hover, .side-dark:hover { flex: 1.4; }
+      .light-label p, .dark-label p { text-align: center; margin: 0 auto; }
+      .dark-label { text-align: center; }
+      .light-preview { display: none; }
+    }
   </style>
-
 </head>
-
 <body>
 
-  <div class="container">
+  <div class="split">
 
-    <header class="header">
+    <!-- LIGHT -->
+    <a class="side-light" href="light.html">
 
-      <div>
-
-        <h1 class="title">
-          Project Archive
-        </h1>
-
-        <div class="subtitle">
-          Software projects, utilities, experiments, and systems.
+      <!-- background preview -->
+      <div class="light-preview">
+        <div class="light-preview-infobox">
+          <div class="light-preview-infobox-header">Contact</div>
+          <table>
+            <tr><td>GitHub</td><td>notsajeed</td></tr>
+            <tr><td>Email</td><td>mohammedsajeed</td></tr>
+            <tr><td>LinkedIn</td><td>notsajeed</td></tr>
+          </table>
         </div>
-
+        <div class="light-preview-title">Mohammed Sajeed</div>
+        <div class="light-preview-toc">
+          <div>Contents</div>
+          <ol>
+            <li>About</li>
+            <li>Experience</li>
+            <li>Skills</li>
+            <li>Projects</li>
+            <li>Education</li>
+          </ol>
+        </div>
+        <p>Information Science and Engineering undergraduate at Ramaiah Institute of Technology, Bangalore, with hands-on experience building full-stack web applications, AI-powered developer tools...</p>
+        <p style="margin-top:0.4rem">Comfortable across Next.js, TypeScript, Python, and Supabase, with a focus on performance, clean architecture, and shipping real-world products.</p>
       </div>
 
-    </header>
-
-    <div class="project-list">
-
-      <div class="project">
-
-        <div class="project-id">
-          001
-        </div>
-
-        <div class="project-content">
-
-          <a href="projects/leetcity.html">
-            LeetCity
-          </a>
-
-          <div class="description">
-            Interactive 3D skyline visualization platform for LeetCode activity.
-          </div>
-
-        </div>
-
+      <div class="light-label">
+        <div class="eyebrow">Classic view</div>
+        <h2>The Document</h2>
+        <p>Clear, structured, everything in one place.</p>
+        <div class="enter">Enter →</div>
       </div>
 
-      <div class="project">
+    </a>
 
-        <div class="project-id">
-          002
-        </div>
-
-        <div class="project-content">
-
-          <a href="projects/mcbots.html">
-            MCBots
-          </a>
-
-          <div class="description">
-            Experimental multi-bot orchestration system for Minecraft LAN worlds.
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="project">
-
-        <div class="project-id">
-          003
-        </div>
-
-        <div class="project-content">
-
-          <a href="projects/vizq.html">
-            VizQ
-          </a>
-
-          <div class="description">
-            Structured visualization and information exploration system.
-          </div>
-
-        </div>
-
-      </div>
-
-    <div class="project">
-
-        <div class="project-id">
-          004
-        </div>
-
-        <div class="project-content">
-
-          <a href="projects/tpg.html">
-            TPG
-          </a>
-
-          <div class="description">
-            Title page generator for MSRIT students.
-          </div>
-
-        </div>
-
-      </div>
-
-          <div class="project">
-
-        <div class="project-id">
-          005
-        </div>
-
-        <div class="project-content">
-
-          <a href="projects/py4096.html">
-            Py4096
-          </a>
-
-          <div class="description">
-            4096 puzzle game in terminal.
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="project">
-
-        <div class="project-id">
-          006
-        </div>
-
-        <div class="project-content">
-
-          <a href="projects/3body.html">
-            3body
-          </a>
-
-          <div class="description">
-            Real-time numerical simulation of chaotic orbital mechanics.
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="project">
-
-        <div class="project-id">
-          007
-        </div>
-
-        <div class="project-content">
-
-          <a href="projects/ath.html">
-            Ath
-          </a>
-
-          <div class="description">
-            Browse and analyze individual Python files.
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="project">
-
-        <div class="project-id">
-          008
-        </div>
-
-        <div class="project-content">
-
-          <a href="projects/datapawn.html">
-             Datapawn
-          </a>
-
-          <div class="description">
-            Chess Dataset Generator.
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="project">
-
-        <div class="project-id">
-          009
-        </div>
-
-        <div class="project-content">
-
-          <a href="projects/raven.html">
-             Raven
-          </a>
-
-          <div class="description">
-            A semantic CLI wrapper around Git.
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="project">
-
-        <div class="project-id">
-          010
-        </div>
-
-        <div class="project-content">
-
-          <a href="projects/firstgame.html">
-             First Game
-          </a>
-
-          <div class="description">
-            A small Godot platformer built while learning the engine.
-          </div>
-
-        </div>
-
-      </div>
-
+    <!-- divider -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-name">Sajeed</div>
+      <div class="divider-line"></div>
     </div>
 
-    <footer class="footer">
+    <!-- DARK -->
+    <a class="side-dark" href="dark.html">
 
-      <div class="footer-left">
+      <canvas id="star-canvas"></canvas>
 
-        <div class="footer-title">
-          Mohammed Sajeed
-        </div>
-
-        <div class="footer-subtitle">
-          Software projects, experiments, and systems.
-        </div>
-
+      <!-- tree silhouette -->
+      <div class="tree-silhouette">
+        <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#e8e8f0" stroke-width="1.5">
+          <!-- trunk -->
+          <line x1="100" y1="380" x2="100" y2="180"/>
+          <!-- roots -->
+          <path d="M100 360 Q70 390 40 395"/>
+          <path d="M100 360 Q130 390 160 395"/>
+          <path d="M100 370 Q85 395 65 400"/>
+          <path d="M100 370 Q115 395 135 400"/>
+          <path d="M100 365 Q60 380 30 370"/>
+          <path d="M100 365 Q140 380 170 370"/>
+          <!-- main branches -->
+          <path d="M100 280 Q60 240 20 230"/>
+          <path d="M100 280 Q140 240 180 230"/>
+          <path d="M100 240 Q55 190 15 175"/>
+          <path d="M100 240 Q145 190 185 175"/>
+          <path d="M100 200 Q80 160 60 140"/>
+          <path d="M100 200 Q120 160 140 140"/>
+          <!-- top -->
+          <path d="M100 200 Q95 160 90 130"/>
+          <path d="M100 200 Q105 160 110 130"/>
+          <path d="M100 185 Q100 150 100 110"/>
+          <!-- small twigs -->
+          <path d="M60 140 Q45 120 30 115"/>
+          <path d="M60 140 Q55 118 50 105"/>
+          <path d="M140 140 Q155 120 170 115"/>
+          <path d="M140 140 Q145 118 150 105"/>
+          <path d="M20 230 Q10 210 5 195"/>
+          <path d="M180 230 Q190 210 195 195"/>
+        </svg>
       </div>
 
-      <div class="footer-links">
-
-        <a href="https://github.com/notsajeed" target="_blank">
-          GitHub
-        </a>
-
-        <a href="https://linkedin.com/in/notsajeed" target="_blank">
-          LinkedIn
-        </a>
-
-        <a href="mailto:mohammedsajeed200510@gmail.com">
-          Email
-        </a>
-
+      <div class="dark-label">
+        <div class="eyebrow">Yggdrasil view</div>
+        <h2>The Tree</h2>
+        <p>Navigate through the world tree. Each branch, a story.</p>
+        <div class="enter">→ Enter</div>
       </div>
 
-    </footer>
+    </a>
 
   </div>
 
-</body>
+  <script>
+    // Stars
+    const canvas = document.getElementById('star-canvas');
+    const ctx = canvas.getContext('2d');
 
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      drawStars();
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const count = 180;
+      for (let i = 0; i < count; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const r = Math.random() * 1.2;
+        const alpha = 0.3 + Math.random() * 0.7;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.fill();
+      }
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Twinkle
+    function twinkle() {
+      const stars = [];
+      const count = 180;
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.2,
+          alpha: 0.3 + Math.random() * 0.7,
+          speed: 0.003 + Math.random() * 0.008,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+
+      function animate(t) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(s => {
+          const a = s.alpha * (0.6 + 0.4 * Math.sin(t * s.speed + s.phase));
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,255,255,${a})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    }
+
+    twinkle();
+  </script>
+
+</body>
 </html>
-```

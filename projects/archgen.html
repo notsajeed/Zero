@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>archgen</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#pipeline">Pipeline</a></li>
+          <li><a href="#agents">Agents</a></li>
+          <li><a href="#domains">Domains</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#structure">Structure</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#usage">Usage</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+
+      <a href="../index.html" class="back-link">
+        ← Back to Home
+      </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            archgen
+          </h1>
+
+          <div class="page-subtitle">
+            A multi-agent AI pipeline that turns a one-sentence software idea into a full architecture blueprint.
+          </div>
+
+          <div class="status">
+            COMPLETED PROJECT
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>AI Pipeline / Web App</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>active</td>
+            </tr>
+
+            <tr>
+              <td>Language</td>
+              <td>Python / JavaScript</td>
+            </tr>
+
+            <tr>
+              <td>Backend</td>
+              <td>FastAPI</td>
+            </tr>
+
+            <tr>
+              <td>Frontend</td>
+              <td>Vanilla JS / HTML / CSS</td>
+            </tr>
+
+            <tr>
+              <td>Providers</td>
+              <td>Gemini / Groq / Cerebras / OpenRouter</td>
+            </tr>
+
+            <tr>
+              <td>Repository</td>
+              <td>
+                <a href="https://github.com/notsajeed/archgen" target="_blank">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          archgen takes a one-sentence software idea and runs it through
+          a sequence of specialist AI agents — each focused on a single concern —
+          and produces a full architecture blueprint covering system design,
+          storage, security, deployment, performance, and cost.
+        </p>
+
+        <p>
+          A final critic agent reviews the combined output and flags gaps,
+          overengineering, and risks the other agents missed.
+        </p>
+
+        <p>
+          Built as a way to learn multi-agent orchestration, prompt design
+          across domains, and working with several LLM provider APIs in one project.
+        </p>
+
+      </section>
+
+      <section id="pipeline">
+
+        <h2>Pipeline</h2>
+
+        <p>
+          The flow for every request is the same regardless of domain:
+        </p>
+
+        <pre><code>idea → extract requirements → classify domain → run specialist agents → critic review → export</code></pre>
+
+        <p>
+          Output streams live to the frontend via Server-Sent Events
+          and can be exported as Markdown when the run is complete.
+        </p>
+
+      </section>
+
+      <section id="agents">
+
+        <h2>Agents</h2>
+
+        <p>
+          Each agent is a separate file responsible for one concern.
+          Prompts and provider calls are explicit — no LangChain abstraction.
+        </p>
+
+        <ul>
+          <li><strong>Extractor</strong> — pulls structured requirements from the raw idea</li>
+          <li><strong>Architect</strong> — produces the system design</li>
+          <li><strong>Database</strong> — storage strategy and data model</li>
+          <li><strong>Security</strong> — threat model and security controls</li>
+          <li><strong>DevOps</strong> — deployment and infrastructure plan</li>
+          <li><strong>Performance</strong> — bottleneck analysis and scaling notes</li>
+          <li><strong>Cost</strong> — infrastructure cost estimate</li>
+          <li><strong>Critic</strong> — reviews all output, flags what was missed</li>
+          <li><strong>Domain experts</strong> — nine additional agents for non-web domains</li>
+        </ul>
+
+      </section>
+
+      <section id="domains">
+
+        <h2>Domains</h2>
+
+        <p>
+          Each domain is a self-contained plugin that injects domain-specific context
+          into every agent. Adding a new domain is one new plugin file.
+        </p>
+
+        <ul>
+          <li>Web application</li>
+          <li>Mobile application</li>
+          <li>Game engine</li>
+          <li>OS kernel</li>
+          <li>Compiler</li>
+          <li>Distributed system</li>
+          <li>Database engine</li>
+          <li>AI / ML platform</li>
+          <li>Embedded firmware</li>
+          <li>HPC / research software</li>
+        </ul>
+
+      </section>
+
+      <section id="stack">
+
+        <h2>Stack</h2>
+
+        <ul>
+          <li><strong>Backend</strong> — Python, FastAPI, Server-Sent Events for streaming</li>
+          <li><strong>Frontend</strong> — Vanilla JS, HTML, CSS — no build step</li>
+          <li><strong>LLM providers</strong> — Gemini, Groq, Cerebras, OpenRouter, Claude</li>
+          <li><strong>Deployment</strong> — Dockerfile included</li>
+        </ul>
+
+        <p>
+          Each agent is independently assigned to whichever provider suits it best
+          via a single config file. The pipeline is designed to run entirely
+          on free-tier API keys — no credit card required to try it.
+        </p>
+
+      </section>
+
+      <section id="structure">
+
+        <h2>Structure</h2>
+
+        <ul>
+          <li><code>agents/</code> — one file per specialist agent</li>
+          <li><code>plugins/</code> — one file per domain</li>
+          <li><code>providers/</code> — thin wrappers for each LLM provider</li>
+          <li><code>config/</code> — agent-to-model assignments</li>
+          <li><code>core/</code> — pipeline orchestration and domain classifier</li>
+          <li><code>api/</code> — FastAPI routes and SSE streaming</li>
+          <li><code>frontend/</code> — vanilla JS/HTML/CSS interface</li>
+          <li><code>output/</code> — Markdown blueprint export</li>
+        </ul>
+
+      </section>
+
+      <section id="screenshots">
+
+        <h2>Screenshots</h2>
+
+        <img
+          src="https://github.com/notsajeed/archgen/raw/main/docs/screenshots/system.png"
+          alt="Distributed System header and top of output"
+          class="project-image"
+        />
+
+        <img
+          src="https://github.com/notsajeed/archgen/raw/main/docs/screenshots/security.png"
+          alt="Left sidebar agents panel and Security Model section"
+          class="project-image"
+        />
+
+      </section>
+
+      <section id="usage">
+
+        <h2>Usage</h2>
+
+        <pre><code>git clone https://github.com/notsajeed/archgen
+cd archgen
+pip install -r requirements.txt
+cp .env.example .env
+# paste at least one API key into .env
+uvicorn main:app --reload</code></pre>
+
+        <p>
+          Open <code>http://127.0.0.1:8000</code>, type a software idea,
+          and watch the pipeline run. Groq has the highest free daily cap
+          (1,000 req/day) and is the easiest key to start with.
+        </p>
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          The plugin system was the core design decision — each domain injects
+          its own context so agents don't produce irrelevant suggestions
+          (a compiler doesn't get told to add a REST API).
+        </p>
+
+        <p>
+          Runs on free-tier LLM APIs with real daily quotas.
+          Hitting a quota error mid-run is expected behaviour on the free tier,
+          not a bug — swap that agent to a different provider in <code>config/agent_models.py</code>.
+        </p>
+
+        <p>
+          No per-user auth or multi-tenancy — designed to be run locally
+          with your own keys.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and builds.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>

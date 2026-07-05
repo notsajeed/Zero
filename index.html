@@ -1,410 +1,665 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Mohammed Sajeed</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Georgia', serif;
+    /* ── Reset & base ── */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .split {
-      display: flex;
-      height: 100vh;
-      width: 100vw;
+    body {
+      font-family: 'Linux Libertine', 'Georgia', 'Times New Roman', serif;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      background: var(--bg, #fff);
+      color: var(--fg, #202122);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
     }
 
-    /* ── LIGHT SIDE ── */
-    .side-light {
-      flex: 1;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 3rem 4rem;
-      cursor: pointer;
-      transition: flex 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-      border-right: 1px solid #a2a9b1;
-      position: relative;
-      overflow: hidden;
+    a {
+      color: #0645ad;
       text-decoration: none;
     }
 
-    .side-light:hover { flex: 1.35; }
-
-    .light-preview {
-      position: absolute;
-      inset: 0;
-      padding: 2rem;
-      opacity: 0.18;
-      pointer-events: none;
-      font-family: 'Linux Libertine', 'Georgia', serif;
-      color: #202122;
-      font-size: 0.75rem;
-      line-height: 1.6;
-      overflow: hidden;
+    a:hover {
+      text-decoration: underline;
     }
 
-    .light-preview-title {
-      font-size: 1.6rem;
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      background: #f8f9fa;
+      border: 1px solid #eaecf0;
+      padding: 0 3px;
+      border-radius: 2px;
+    }
+
+    /* ── Top nav ── */
+    .site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.85rem;
+    }
+
+    .site-nav .nav-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .site-nav .nav-right {
+      color: #54595d;
+      font-size: 0.82rem;
+    }
+
+    /* ── Page title block ── */
+    .page-title {
+      font-family: 'Linux Libertine', 'Georgia', serif;
+      font-size: 2rem;
+      font-weight: normal;
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .page-subtitle {
+      color: #54595d;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Infobox ── */
+    .infobox {
+      float: right;
+      clear: right;
+      margin: 0 0 1rem 1.5rem;
+      border: 1px solid #a2a9b1;
+      background: #f8f9fa;
+      font-size: 0.85rem;
+      width: 280px;
+    }
+
+    .infobox-header {
+      background: #cee0f2;
+      text-align: center;
+      font-weight: bold;
+      padding: 0.35rem 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .infobox table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .infobox td {
+      padding: 0.3rem 0.5rem;
+      vertical-align: top;
+      border-top: 1px solid #eaecf0;
+    }
+
+    .infobox td:first-child {
+      font-weight: bold;
+      white-space: nowrap;
+      width: 40%;
+      color: #54595d;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      display: inline-block;
+      background: #f8f9fa;
+      border: 1px solid #a2a9b1;
+      padding: 0.75rem 1rem;
+      font-size: 0.88rem;
+      margin-bottom: 1.5rem;
+      min-width: 200px;
+    }
+
+    .toc-title {
+      font-weight: bold;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 1.4rem;
+    }
+
+    .toc li {
+      margin: 0.15rem 0;
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 2rem;
+      clear: both;
+    }
+
+    section h2 {
+      font-family: 'Linux Libertine', 'Georgia', serif;
+      font-size: 1.4rem;
       font-weight: normal;
       border-bottom: 1px solid #a2a9b1;
       padding-bottom: 0.2rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
-    .light-preview-toc {
-      display: inline-block;
-      border: 1px solid #a2a9b1;
-      background: #f8f9fa;
-      padding: 0.4rem 0.6rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.7rem;
-    }
-
-    .light-preview-toc div { font-weight: bold; margin-bottom: 0.2rem; }
-    .light-preview-toc ol { padding-left: 1rem; }
-
-    .light-preview-infobox {
-      float: right;
-      border: 1px solid #a2a9b1;
-      background: #f8f9fa;
-      width: 120px;
-      margin-left: 0.5rem;
-      font-size: 0.65rem;
-    }
-
-    .light-preview-infobox-header {
-      background: #cee0f2;
-      text-align: center;
-      padding: 0.2rem;
+    section h3 {
+      font-size: 1rem;
       font-weight: bold;
+      margin: 0.75rem 0 0.3rem;
     }
 
-    .light-preview-infobox table { width: 100%; border-collapse: collapse; }
-    .light-preview-infobox td { padding: 0.15rem 0.3rem; border-top: 1px solid #eaecf0; font-size: 0.62rem; }
-
-    .light-label {
-      position: relative;
-      z-index: 2;
+    section p {
+      margin-bottom: 0.6rem;
     }
 
-    .light-label .eyebrow {
-      font-size: 0.75rem;
+    section ul, section ol {
+      padding-left: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    section li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* ── Skills grid ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .skill-group {
+      background: #f8f9fa;
+      border: 1px solid #eaecf0;
+      padding: 0.6rem 0.75rem;
+    }
+
+    .skill-group-label {
+      font-weight: bold;
+      font-size: 0.82rem;
       color: #54595d;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .light-label h2 {
-      font-size: 2rem;
-      font-weight: normal;
-      color: #202122;
+      letter-spacing: 0.04em;
       margin-bottom: 0.3rem;
     }
 
-    .light-label p {
+    .skill-group p {
+      margin: 0;
       font-size: 0.88rem;
-      color: #54595d;
-      max-width: 260px;
       line-height: 1.5;
     }
 
-    .light-label .enter {
-      margin-top: 1.25rem;
+    /* ── Projects table ── */
+    .projects-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .projects-table thead tr {
+      border-bottom: 2px solid #a2a9b1;
+    }
+
+    .projects-table th {
+      text-align: left;
+      padding: 0.4rem 0.75rem 0.4rem 0;
+      font-weight: bold;
+      color: #54595d;
       font-size: 0.82rem;
-      color: #0645ad;
+      text-transform: uppercase;
       letter-spacing: 0.04em;
     }
 
-    /* ── DARK SIDE ── */
-    .side-dark {
-      flex: 1;
-      background: #03060f;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      padding: 3rem 4rem;
-      cursor: pointer;
-      transition: flex 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
+    .projects-table td {
+      padding: 0.5rem 0.75rem 0.5rem 0;
+      border-bottom: 1px solid #eaecf0;
+      vertical-align: top;
     }
 
-    .side-dark:hover { flex: 1.35; }
-
-    /* star canvas */
-    #star-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.6;
+    .projects-table td:last-child {
+      color: #54595d;
+      font-size: 0.87rem;
     }
 
-    /* tree silhouette */
-    .tree-silhouette {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-      opacity: 0.12;
-    }
-
-    .tree-silhouette svg {
-      height: 90%;
-      width: auto;
-    }
-
-    .dark-label {
-      position: relative;
-      z-index: 2;
-      text-align: right;
-    }
-
-    .dark-label .eyebrow {
+    .tag {
+      display: inline-block;
       font-size: 0.75rem;
-      color: #4a6fa5;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      font-family: 'Courier New', monospace;
+      background: #eaecf0;
+      border: 1px solid #c8ccd1;
+      padding: 1px 5px;
+      border-radius: 2px;
+      margin: 1px 2px 1px 0;
+      color: #333;
     }
 
-    .dark-label h2 {
-      font-size: 2rem;
-      font-weight: normal;
-      color: #e8e8f0;
-      margin-bottom: 0.3rem;
-      font-family: 'Georgia', serif;
+    /* ── Education table ── */
+    .edu-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
     }
 
-    .dark-label p {
-      font-size: 0.88rem;
-      color: #a0aec0;
-      max-width: 260px;
-      line-height: 1.5;
-      margin-left: auto;
+    .edu-table td {
+      padding: 0.5rem 0.75rem 0.5rem 0;
+      border-bottom: 1px solid #eaecf0;
+      vertical-align: top;
     }
 
-    .dark-label .enter {
-      margin-top: 1.25rem;
-      font-size: 0.82rem;
-      color: #4a6fa5;
-      letter-spacing: 0.06em;
-      font-family: 'Courier New', monospace;
+    .edu-table td:first-child {
+      font-weight: bold;
+      width: 55%;
     }
 
-    /* divider label */
-    .divider {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      pointer-events: none;
-    }
-
-    .divider-line {
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, transparent, #a2a9b1, transparent);
-    }
-
-    .divider-name {
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #a2a9b1;
+    .edu-table td:last-child {
+      color: #54595d;
+      text-align: right;
       white-space: nowrap;
-      font-family: 'Georgia', serif;
     }
 
-    @media (max-width: 640px) {
-      .split { flex-direction: column; }
-      .side-light, .side-dark {
-        align-items: center;
-        padding: 2.5rem 2rem;
-      }
-      .side-light:hover, .side-dark:hover { flex: 1.4; }
-      .light-label p, .dark-label p { text-align: center; margin: 0 auto; }
-      .dark-label { text-align: center; }
-      .light-preview { display: none; }
+    /* ── Clubs ── */
+    .club-block {
+      border-left: 3px solid #a2a9b1;
+      padding-left: 0.85rem;
+      margin-bottom: 1rem;
     }
+
+    .club-name {
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .club-role {
+      font-size: 0.85rem;
+      color: #54595d;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ── Certifications ── */
+    .cert-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cert-list li {
+      padding: 0.35rem 0;
+      border-bottom: 1px solid #eaecf0;
+      font-size: 0.9rem;
+    }
+
+    .cert-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* ── Experience ── */
+    .exp-block {
+      margin-bottom: 1.25rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .exp-company {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .exp-period {
+      font-size: 0.82rem;
+      color: #54595d;
+    }
+
+    .exp-role {
+      font-size: 0.88rem;
+      color: #54595d;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 3rem;
+      border-top: 1px solid #a2a9b1;
+      padding-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: #54595d;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .infobox {
+        float: none;
+        width: 100%;
+        margin: 0 0 1.25rem 0;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-header {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+
   </style>
+
 </head>
+
 <body>
 
-  <div class="split">
-
-    <!-- LIGHT -->
-    <a class="side-light" href="light.html">
-
-      <!-- background preview -->
-      <div class="light-preview">
-        <div class="light-preview-infobox">
-          <div class="light-preview-infobox-header">Contact</div>
-          <table>
-            <tr><td>GitHub</td><td>notsajeed</td></tr>
-            <tr><td>Email</td><td>mohammedsajeed</td></tr>
-            <tr><td>LinkedIn</td><td>notsajeed</td></tr>
-          </table>
-        </div>
-        <div class="light-preview-title">Mohammed Sajeed</div>
-        <div class="light-preview-toc">
-          <div>Contents</div>
-          <ol>
-            <li>About</li>
-            <li>Experience</li>
-            <li>Skills</li>
-            <li>Projects</li>
-            <li>Education</li>
-          </ol>
-        </div>
-        <p>Information Science and Engineering undergraduate at Ramaiah Institute of Technology, Bangalore, with hands-on experience building full-stack web applications, AI-powered developer tools...</p>
-        <p style="margin-top:0.4rem">Comfortable across Next.js, TypeScript, Python, and Supabase, with a focus on performance, clean architecture, and shipping real-world products.</p>
-      </div>
-
-      <div class="light-label">
-        <div class="eyebrow">Classic view</div>
-        <h2>The Document</h2>
-        <p>Clear, structured, everything in one place.</p>
-        <div class="enter">Enter →</div>
-      </div>
-
-    </a>
-
-    <!-- divider -->
-    <div class="divider">
-      <div class="divider-line"></div>
-      <div class="divider-name">Sajeed</div>
-      <div class="divider-line"></div>
+  <!-- Nav -->
+  <nav class="site-nav">
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
+    <div class="nav-right">
+      notsajeed.pages.dev
+    </div>
+  </nav>
 
-    <!-- DARK -->
-    <a class="side-dark" href="dark.html">
-
-      <canvas id="star-canvas"></canvas>
-
-      <!-- tree silhouette -->
-      <div class="tree-silhouette">
-        <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#e8e8f0" stroke-width="1.5">
-          <!-- trunk -->
-          <line x1="100" y1="380" x2="100" y2="180"/>
-          <!-- roots -->
-          <path d="M100 360 Q70 390 40 395"/>
-          <path d="M100 360 Q130 390 160 395"/>
-          <path d="M100 370 Q85 395 65 400"/>
-          <path d="M100 370 Q115 395 135 400"/>
-          <path d="M100 365 Q60 380 30 370"/>
-          <path d="M100 365 Q140 380 170 370"/>
-          <!-- main branches -->
-          <path d="M100 280 Q60 240 20 230"/>
-          <path d="M100 280 Q140 240 180 230"/>
-          <path d="M100 240 Q55 190 15 175"/>
-          <path d="M100 240 Q145 190 185 175"/>
-          <path d="M100 200 Q80 160 60 140"/>
-          <path d="M100 200 Q120 160 140 140"/>
-          <!-- top -->
-          <path d="M100 200 Q95 160 90 130"/>
-          <path d="M100 200 Q105 160 110 130"/>
-          <path d="M100 185 Q100 150 100 110"/>
-          <!-- small twigs -->
-          <path d="M60 140 Q45 120 30 115"/>
-          <path d="M60 140 Q55 118 50 105"/>
-          <path d="M140 140 Q155 120 170 115"/>
-          <path d="M140 140 Q145 118 150 105"/>
-          <path d="M20 230 Q10 210 5 195"/>
-          <path d="M180 230 Q190 210 195 195"/>
-        </svg>
-      </div>
-
-      <div class="dark-label">
-        <div class="eyebrow">Yggdrasil view</div>
-        <h2>The Tree</h2>
-        <p>Navigate through the world tree. Each branch, a story.</p>
-        <div class="enter">→ Enter</div>
-      </div>
-
-    </a>
-
+  <!-- Title -->
+  <h1 class="page-title">Mohammed Sajeed</h1>
+  <div class="page-subtitle">
+    Full-Stack Developer · AI Development · CLI Automation · Information Science undergraduate, MSRIT Bangalore
   </div>
 
-  <script>
-    // Stars
-    const canvas = document.getElementById('star-canvas');
-    const ctx = canvas.getContext('2d');
+  <!-- Infobox -->
+  <div class="infobox">
+    <div class="infobox-header">Contact & Links</div>
+    <table>
+      <tr>
+        <td>Email</td>
+        <td><a href="mailto:mohammedsajeed200510@gmail.com">mohammedsajeed200510<br>@gmail.com</a></td>
+      </tr>
+      <tr>
+        <td>Phone</td>
+        <td>+91 73376 09604</td>
+      </tr>
+      <tr>
+        <td>GitHub</td>
+        <td><a href="https://github.com/notsajeed" target="_blank">notsajeed</a></td>
+      </tr>
+      <tr>
+        <td>LinkedIn</td>
+        <td><a href="https://linkedin.com/in/notsajeed" target="_blank">notsajeed</a></td>
+      </tr>
+      <tr>
+        <td>LeetCode</td>
+        <td><a href="https://leetcode.com/notsajeed" target="_blank">notsajeed</a></td>
+      </tr>
+    </table>
+  </div>
 
-    function resize() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      drawStars();
-    }
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#extracurricular">Extracurricular</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+    </ol>
+  </div>
 
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const count = 180;
-      for (let i = 0; i < count; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        const r = Math.random() * 1.2;
-        const alpha = 0.3 + Math.random() * 0.7;
-        ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-        ctx.fill();
-      }
-    }
+  <!-- About -->
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      Information Science and Engineering undergraduate at Ramaiah Institute of Technology, Bangalore,
+      with hands-on experience building full-stack web applications, AI-powered developer tools,
+      interactive 3D applications, and physics simulations.
+    </p>
+    <p>
+      Comfortable across Next.js, TypeScript, Python, and Supabase,
+      with a focus on performance, clean architecture, and shipping real-world products.
+      Interested in game development, design, and quantum computing on the side.
+    </p>
+  </section>
 
-    resize();
-    window.addEventListener('resize', resize);
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="exp-block">
+      <div class="exp-header">
+        <span class="exp-company">
+          <a href="https://tfcustoms.in" target="_blank">TF Customs</a>
+        </span>
+        <span class="exp-period">2024 – 2025</span>
+      </div>
+      <div class="exp-role">Full-Stack Developer · Remote</div>
+      <ul>
+        <li>Built and deployed a full e-commerce platform using Next.js, TypeScript, Supabase, and Razorpay with 2-step authentication for secure checkout.</li>
+        <li>Automated the end-to-end shipment pipeline via the ShipRocket API, enabling real-time tracking with zero manual intervention.</li>
+        <li>Added limit/offset pagination and Cache-Control headers (5-minute TTL, stale-while-revalidate) on all public API routes, and parallelised independent Supabase queries with <code>Promise.all</code>.</li>
+        <li>Cached NHTSA API responses in <code>sessionStorage</code> and migrated from react-icons to lucide-react for cleaner tree-shaking.</li>
+      </ul>
+    </div>
+  </section>
 
-    // Twinkle
-    function twinkle() {
-      const stars = [];
-      const count = 180;
-      for (let i = 0; i < count; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.2,
-          alpha: 0.3 + Math.random() * 0.7,
-          speed: 0.003 + Math.random() * 0.008,
-          phase: Math.random() * Math.PI * 2
-        });
-      }
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">Languages</div>
+        <p>Python, JavaScript, TypeScript, Java, C</p>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Frontend</div>
+        <p>React.js, Next.js, Three.js / R3F, HTML, CSS, Tailwind</p>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Backend</div>
+        <p>Node.js, Express.js, Flask, FastAPI, REST APIs</p>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Databases</div>
+        <p>Supabase (Postgres), MongoDB, MySQL, Firebase, Redis (Upstash)</p>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">AI / ML</div>
+        <p>OpenAI API, Anthropic Claude API, Ollama (local LLMs)</p>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Tools</div>
+        <p>Git, GitHub, Linux, FFmpeg, Razorpay, ShipRocket API</p>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Design / 3D</div>
+        <p>Adobe Creative Suite, Blender, Godot</p>
+      </div>
+    </div>
+  </section>
 
-      function animate(t) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(s => {
-          const a = s.alpha * (0.6 + 0.4 * Math.sin(t * s.speed + s.phase));
-          ctx.beginPath();
-          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,255,255,${a})`;
-          ctx.fill();
-        });
-        requestAnimationFrame(animate);
-      }
-      requestAnimationFrame(animate);
-    }
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <table class="projects-table">
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="projects/leetcity.html">LeetCity</a></td>
+          <td>Interactive 3D skyline visualization platform for LeetCode activity.</td>
+        </tr>
+        <tr>
+          <td><a href="projects/parkinsons.html">PD</a></td>
+          <td>Multimodal gait and voice analysis with explainable deep learning for clinically realistic PD screening.</td>
+        </tr>
+        <tr>
+          <td><a href="projects/mcbots.html">MCBots</a></td>
+          <td>Experimental multi-bot orchestration system for Minecraft LAN worlds.</td>
+        </tr>
+        <tr>
+          <td><a href="projects/vizq.html">VizQ</a></td>
+          <td>Structured visualization and information exploration system.</td>
+        </tr>
+        <tr>
+          <td><a href="projects/tpg.html">TPG</a></td>
+          <td>Title page generator for MSRIT students.</td>
+        </tr>
+        <tr>
+          <td><a href="projects/py4096.html">Py4096</a></td>
+          <td>4096 puzzle game in terminal.</td>
+        </tr>
+        <tr>
+          <td><a href="projects/3body.html">3body</a></td>
+          <td>Real-time numerical simulation of chaotic orbital mechanics.</td>
+        </tr>
+        <tr>
+          <td><a href="projects/ath.html">Ath</a></td>
+          <td>Browse and analyze individual Python files.</td>
+        </tr>
+        <tr>
+          <td><a href="projects/datapawn.html">Datapawn</a></td>
+          <td>Chess Dataset Generator.</td>
+        </tr>
+        <tr>
+          <td><a href="projects/raven.html">Raven</a></td>
+          <td>A semantic CLI wrapper around Git.</td>
+        </tr>
+        <tr>
+          <td><a href="projects/firstgame.html">First Game</a></td>
+          <td>A small Godot platformer built while learning the engine.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-    twinkle();
-  </script>
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <table class="edu-table">
+      <tr>
+        <td>
+          <strong>Ramaiah Institute of Technology</strong><br>
+          B.E. Information Science &amp; Engineering · CGPA 8.15 / 10
+        </td>
+        <td>2023 – 2027</td>
+      </tr>
+      <tr>
+        <td>
+          <strong>SVN PU College, Sandur</strong><br>
+          Pre-University (Science)
+        </td>
+        <td>2021 – 2023</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Extracurricular -->
+  <section id="extracurricular">
+    <h2>Extracurricular</h2>
+
+    <div class="club-block">
+      <div class="club-name">ClutchRIT — eSports Club</div>
+      <div class="club-role">Coordination &amp; Technical Team</div>
+      <ul>
+        <li>Organised 10+ eSports events with 200+ players per event.</li>
+        <li>Handled technical logistics, team operations, and event management.</li>
+      </ul>
+    </div>
+
+    <div class="club-block">
+      <div class="club-name">
+        QuantumRIT — Quantum Club
+        <span style="font-weight:normal; font-size:0.85rem; color:#54595d;">
+          · Associated with <a href="https://qpiai.tech" target="_blank">QpiAI</a>
+        </span>
+      </div>
+      <div class="club-role">Core Team Member &amp; Designer</div>
+      <ul>
+        <li>Organised quantum computing events and workshops; contributed to club operations and outreach.</li>
+        <li>Designed the official QuantumRIT logo, establishing the club's visual identity.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <ul class="cert-list">
+      <li>
+        <a href="https://www.credly.com/badges/fb63dfea-8891-4762-9d1e-1621ac4e1595/public_url" target="_blank">
+          Quantum Enigmas
+        </a>
+        — IBM
+      </li>
+      <li>
+        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/j43dGscQHtJJ57N54/a77WE3de8qrxWferQ_j43dGscQHtJJ57N54_AhbcJG67jYC87XZox_1750491575890_completion_certificate.pdf" target="_blank">
+          Software Engineering Job Simulation
+        </a>
+        — Electronic Arts (EA)
+      </li>
+      <li>
+        <a href="https://www.freecodecamp.org/certification/mdsajeed/data-analysis-with-python-v7" target="_blank">
+          Data Analysis with Python
+        </a>
+        — freeCodeCamp
+      </li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div>
+      <strong>Mohammed Sajeed</strong><br>
+      Software projects, experiments, and builds.
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/notsajeed" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/notsajeed" target="_blank">LinkedIn</a>
+      <a href="mailto:mohammedsajeed200510@gmail.com">Email</a>
+    </div>
+  </footer>
 
 </body>
+
 </html>

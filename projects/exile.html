@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Exile</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#requirements">Requirements</a></li>
+          <li><a href="#usage">Usage</a></li>
+          <li><a href="#limitations">Known Limitations</a></li>
+          <li><a href="#future">Future Enhancements</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+
+      <a href="../index.html" class="back-link">
+        ← Back to Home
+      </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            Exile
+          </h1>
+
+          <div class="page-subtitle">
+            Android app that automatically closes YouTube Shorts the moment they open.
+          </div>
+
+          <div class="status">
+            ACTIVE PROJECT
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>Android Utility App</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>Active Development</td>
+            </tr>
+
+            <tr>
+              <td>Language</td>
+              <td>Kotlin</td>
+            </tr>
+
+            <tr>
+              <td>Framework</td>
+              <td>Android Accessibility API</td>
+            </tr>
+
+            <tr>
+            <td>License</td>
+            <td>MIT</td>
+            </tr>
+
+            <tr>
+            <td>Repository</td>
+            <td>
+                <a href="https://github.com/notsajeed/exile" target="_blank">
+                Github
+                </a>
+            </td>
+            </tr>
+
+            <tr>
+            <td>Download</td>
+            <td>
+                <a href="https://exileweb.pages.dev" download>
+                APK (Android)
+                </a>
+            </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          Exile is a free, open-source Android app that watches the YouTube
+          app in the background and automatically exits the Shorts player
+          the moment it opens.
+        </p>
+
+        <p>
+          It was built as a direct alternative to Play Store "Shorts blocker"
+          apps that gate the same basic functionality behind a subscription.
+        </p>
+
+        <p>
+          The app runs entirely on-device, has no internet permission, and
+          collects no data of any kind.
+        </p>
+
+      </section>
+
+      <section id="features">
+
+        <h2>Features</h2>
+
+        <ul>
+          <li>Automatically detects and exits YouTube Shorts in real time</li>
+          <li>Built on Android's Accessibility Service API, no root required</li>
+          <li>Zero network permissions — cannot transmit data anywhere</li>
+          <li>No account, no ads, no analytics, no telemetry</li>
+          <li>Fully open source under the MIT license</li>
+          <li>Free direct APK download, no Play Store required</li>
+        </ul>
+
+      </section>
+
+      <section id="requirements">
+
+        <h2>Requirements</h2>
+
+        <ul>
+          <li>Android 8.0 or higher</li>
+          <li>YouTube app installed</li>
+          <li>Accessibility permission granted to Exile</li>
+          <li>Android Studio (only if building from source)</li>
+        </ul>
+
+      </section>
+
+      <section id="usage">
+
+        <h2>Usage</h2>
+
+        <ul>
+          <li>Install the APK and open the app</li>
+          <li>Grant Exile access under Accessibility Settings</li>
+          <li>Open YouTube as normal</li>
+          <li>Any Short that opens is automatically closed</li>
+        </ul>
+
+      </section>
+
+      <section id="limitations">
+
+        <h2>Known Limitations</h2>
+
+        <p>
+          Exile favors simplicity and transparency over broad platform
+          coverage.
+        </p>
+
+        <ul>
+          <li>Android only — no iOS equivalent is possible</li>
+          <li>Only affects the YouTube app, not YouTube in a browser</li>
+          <li>Detection relies on YouTube's internal view IDs, which can
+            change after app updates and require a fix</li>
+          <li>Some manufacturers (Vivo, Xiaomi, etc.) aggressively kill
+            background services and may need manual battery exceptions</li>
+          <li>Not distributed on the Play Store, so installation requires
+            allowing an unknown source</li>
+        </ul>
+
+      </section>
+
+      <section id="future">
+
+        <h2>Future Enhancements</h2>
+
+        <ul>
+          <li>Support for blocking Instagram Reels and TikTok</li>
+          <li>In-app toggle to enable/disable without visiting system settings</li>
+          <li>Automatic update checks</li>
+          <li>Community-maintained list of current YouTube view IDs</li>
+        </ul>
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          Exile was built to solve a personal problem: existing Shorts
+          blockers were either paywalled or unreliable. The detection logic
+          walks the on-screen accessibility node tree looking for
+          Shorts-specific view IDs and triggers a back action the moment
+          they're found.
+        </p>
+
+        <p>
+          Because YouTube periodically renames these internal IDs, the
+          project is maintained openly so the detection logic can be updated
+          quickly by anyone, not just the original author.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and builds.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>

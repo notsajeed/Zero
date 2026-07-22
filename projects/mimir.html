@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Mimir</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="toc">
+
+        <div class="toc-title">
+          Contents
+        </div>
+
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#requirements">Requirements</a></li>
+          <li><a href="#usage">Usage</a></li>
+          <li><a href="#content-format">Content Format</a></li>
+          <li><a href="#tech-stack">Tech Stack</a></li>
+          <li><a href="#limitations">Known Limitations</a></li>
+          <li><a href="#future">Future Enhancements</a></li>
+          <li><a href="#notes">Development Notes</a></li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <main class="content">
+
+      <a href="../index.html" class="back-link">
+        ← Back to Home
+      </a>
+
+      <div class="project-header">
+
+        <div>
+
+          <h1 class="page-title">
+            Mimir
+          </h1>
+
+          <div class="page-subtitle">
+            A pocket reading app for CS interview prep, covering DSA, OS, DBMS, CN, OOP, and more.
+          </div>
+
+          <div class="status">
+            ACTIVE PROJECT
+          </div>
+
+        </div>
+
+        <div class="infobox">
+
+          <div class="infobox-header">
+            Project Information
+          </div>
+
+          <table>
+
+            <tr>
+              <td>Type</td>
+              <td>Android Reading App</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>Active Development</td>
+            </tr>
+
+            <tr>
+              <td>Language</td>
+              <td>Kotlin</td>
+            </tr>
+
+            <tr>
+              <td>Framework</td>
+              <td>Jetpack Compose</td>
+            </tr>
+
+            <tr>
+              <td>License</td>
+              <td>MIT</td>
+            </tr>
+
+            <tr>
+              <td>Repository</td>
+              <td>
+                <a href="https://github.com/notsajeed/mimir" target="_blank">
+                  GitHub
+                </a>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <section id="overview">
+
+        <h2>Overview</h2>
+
+        <p>
+          Mimir is an Android app built for reading CS interview-prep notes,
+          not quizzing on them. Instead of scattering theory across YouTube
+          playlists, PDFs, and random websites, it pulls everything into one
+          clean, offline-first reader.
+        </p>
+
+        <p>
+          Content and app are fully decoupled: notes live as plain Markdown
+          files in a separate GitHub repository, and the app fetches and
+          caches them at runtime. New topics can be added at any time with
+          nothing more than a <code>git push</code>, with no rebuild and no
+          reinstall.
+        </p>
+
+      </section>
+
+      <section id="features">
+
+        <h2>Features</h2>
+
+        <ul>
+          <li>Clean, distraction-free Markdown reader for CS topics</li>
+          <li>Subject → category → topic navigation, three taps to any note</li>
+          <li>Full-text search across every topic in the index</li>
+          <li>Offline-first, reads from local cache after the first sync</li>
+          <li>Pull-to-refresh to manually re-sync new content</li>
+          <li>Adjustable text size and mark-as-read tracking per topic</li>
+          <li>Dark-first Material 3 theme</li>
+        </ul>
+
+      </section>
+
+      <section id="requirements">
+
+        <h2>Requirements</h2>
+
+        <ul>
+          <li>Android 7.0 or higher</li>
+          <li>Internet connection for the initial content sync</li>
+          <li>A GitHub repository hosting the Markdown notes and index files</li>
+          <li>Android Studio (only if building from source)</li>
+        </ul>
+
+      </section>
+
+      <section id="usage">
+
+        <h2>Usage</h2>
+
+        <ul>
+          <li>Open the app, it syncs the topic index on first launch</li>
+          <li>Browse by subject, then category, then topic</li>
+          <li>Or tap search and jump straight to any topic by name</li>
+          <li>Pull down on the home screen anytime to check for new content</li>
+        </ul>
+
+      </section>
+
+      <section id="content-format">
+
+        <h2>Content Format</h2>
+
+        <p>
+          The app expects two files at the root of the content repository:
+        </p>
+
+        <ul>
+          <li>
+            <code>index.json</code>, the navigation tree (subjects →
+            categories → topics), with each topic pointing to a relative
+            Markdown file path
+          </li>
+          <li>
+            <code>meta.json</code>, containing <code>{ "version": N }</code>, bumped
+            on every content update, which the app checks to decide whether
+            to re-sync
+          </li>
+        </ul>
+
+        <p>
+          Setting a custom content source is a single line in
+          <code>Config.kt</code>:
+        </p>
+
+        <pre><code>const val CONTENT_BASE_URL = "https://raw.githubusercontent.com/&lt;user&gt;/&lt;repo&gt;/main/"</code></pre>
+
+      </section>
+
+      <section id="tech-stack">
+
+        <h2>Tech Stack</h2>
+
+        <ul>
+          <li>Kotlin + Jetpack Compose</li>
+          <li>Material 3 (dark-first theme)</li>
+          <li>Navigation Compose</li>
+          <li>OkHttp for fetching content</li>
+          <li>kotlinx.serialization for JSON</li>
+          <li>Markwon for Markdown rendering</li>
+          <li>DataStore for lightweight local state (read/unread tracking)</li>
+        </ul>
+
+      </section>
+
+      <section id="limitations">
+
+        <h2>Known Limitations</h2>
+
+        <p>
+          Mimir favors simplicity over feature bloat. It is intentionally
+          just a reader, not a quiz engine or a note-taking tool.
+        </p>
+
+        <ul>
+          <li>No in-app content editing, notes are written and pushed via GitHub</li>
+          <li>Sync is not real-time; it checks on launch and on pull-to-refresh</li>
+          <li>Relies on GitHub's raw content CDN, which can briefly serve a
+            stale response for a few minutes right after a push</li>
+          <li>No account system, so read/unread progress does not sync
+            across devices</li>
+        </ul>
+
+      </section>
+
+      <section id="future">
+
+        <h2>Future Enhancements</h2>
+
+        <ul>
+          <li>Spaced-repetition based revision scheduling</li>
+          <li>Per-subject progress tracking</li>
+          <li>Custom app icon and branding</li>
+          <li>Public release with a starter content pack</li>
+        </ul>
+
+      </section>
+
+      <section id="notes">
+
+        <h2>Development Notes</h2>
+
+        <p>
+          Mimir started as a way to stop losing track of interview prep
+          across a dozen scattered PDFs and playlists. The core design
+          decision was keeping content completely separate from the app
+          itself. GitHub acts as a free, versioned CMS, and the app is
+          just a thin reader on top of it.
+        </p>
+
+        <p>
+          That split means adding a new topic is as fast as writing a
+          Markdown file, and the app itself rarely needs to change once the
+          reading experience is right.
+        </p>
+
+      </section>
+
+      <footer class="footer">
+
+        <div class="footer-left">
+
+          <div class="footer-title">
+            Mohammed Sajeed
+          </div>
+
+          <div class="footer-subtitle">
+            Software projects, experiments, and builds.
+          </div>
+
+        </div>
+
+        <div class="footer-links">
+
+          <a href="https://github.com/notsajeed" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://linkedin.com/in/notsajeed" target="_blank">
+            LinkedIn
+          </a>
+
+          <a href="mailto:mohammedsajeed200510@gmail.com">
+            Email
+          </a>
+
+        </div>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>
